@@ -5,6 +5,9 @@ import java.util.List;
 
 public class ApplicationContant {
     public static final String BOOK_INFO_SLICER = "    ";
+    public static final String BOOK_LACE = "*";
+    public static final String BOOK_LIST_LACE = "**********************************************************************";
+    public static final String BOOK_LIST_HEADER = "*    Book Name                        |  Book Author      |  Year    *";
 
     public static final List<String> WELCOME_MESSAGE = Arrays.asList(
             "****************************************************************",

@@ -52,7 +52,7 @@ public class BookServiceMockImplTest {
 
         List<Describable> bookList = borrowAbleService.listAll();
         assertEquals("book list count", 4, bookList.size());
-        assertEquals("book name", "Journey to the West Wu    Cheng'en    1503", bookList.get(1).briefSelfIntroduce());
+        assertEquals("book name", "*    Journey to the West Wu              Cheng'en            1503    *", bookList.get(1).briefSelfIntroduce());
         assertTrue(returnResult);
     }
 

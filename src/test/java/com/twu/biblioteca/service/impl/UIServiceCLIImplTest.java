@@ -62,11 +62,11 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showBookList(Arrays.asList(describable, describable));
 
         assertEquals("book list",
-                "Test Book    Test Author    1999",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*    Test Book                           Test Author         1999    *",
+                spyPrinter.getPrintCalls().get(1).get(0));
         assertEquals("book list",
-                "Test Book    Test Author    1999",
-                spyPrinter.getPrintCalls().get(0).get(1));
+                "*    Test Book                           Test Author         1999    *",
+                spyPrinter.getPrintCalls().get(1).get(1));
     }
 
     @Test

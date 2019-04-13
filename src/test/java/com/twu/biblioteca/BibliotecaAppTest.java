@@ -58,7 +58,7 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        int actualResult = spyPrinter.getPrintCalls().get(2).size();
+        int actualResult = spyPrinter.getPrintCalls().get(3).size();
         assertEquals("Books count", 4, actualResult);
     }
 
@@ -102,7 +102,7 @@ public class BibliotecaAppTest {
                 "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
                 spyPrinter.getPrintCalls().get(2).get(1));
 
-        assertEquals("book list count", 4, spyPrinter.getPrintCalls().get(4).size());
+        assertEquals("book list count", 4, spyPrinter.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -126,7 +126,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books list count",
                 3,
-                spyPrinter.getPrintCalls().get(4).size());
+                spyPrinter.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -143,7 +143,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books list count",
                 3,
-                spyPrinter.getPrintCalls().get(4).size());
+                spyPrinter.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -160,7 +160,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books list count",
                 4,
-                spyPrinter.getPrintCalls().get(4).size());
+                spyPrinter.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -184,7 +184,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books count",
                 4,
-                spyPrinter.getPrintCalls().get(6).size());
+                spyPrinter.getPrintCalls().get(7).size());
     }
 
     @Test

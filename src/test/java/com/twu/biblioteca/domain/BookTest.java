@@ -12,6 +12,6 @@ public class BookTest {
 
         String brief = describable.briefSelfIntroduce();
 
-        assertEquals("book self intro", "Book Name    Book Author    1999", brief);
+        assertEquals("book self intro", "*    Book Name                           Book Author         1999    *", brief);
     }
 }

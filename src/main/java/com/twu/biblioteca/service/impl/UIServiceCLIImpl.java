@@ -7,6 +7,7 @@ import com.twu.biblioteca.service.UIService;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,7 +35,9 @@ public class UIServiceCLIImpl implements UIService {
 
     @Override
     public void showBookList(List<Describable> bookList) {
+        printer.print(Arrays.asList(ApplicationContant.BOOK_LIST_LACE, ApplicationContant.BOOK_LIST_HEADER));
         printer.print(bookList.stream().map(Describable::briefSelfIntroduce).collect(Collectors.toList()));
+        printer.print(Collections.singletonList(ApplicationContant.BOOK_LIST_LACE));
     }
 
     @Override
