@@ -181,6 +181,18 @@ public class BibliotecaAppTest {
                 spyPrinter.getPrintCalls().get(5).size());
     }
 
+    @Test
+    public void should_display_success_message_when_return_book_successfully() {
+        withInput(Arrays.asList(2, 3, 4), Arrays.asList("Journey to the West Wu", "Journey to the West Wu"));
+
+        bibliotecaApp.run();
+
+        assertEquals(
+                "books count",
+                "Thank you for returning the book",
+                spyPrinter.getPrintCalls().get(4).get(0));
+    }
+
     void withInput(List<Integer> options, List<String> bookNames) {
         Queue<Integer> optionsQueue = new ArrayDeque<>(options);
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);

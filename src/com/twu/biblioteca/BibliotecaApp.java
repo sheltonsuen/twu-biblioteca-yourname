@@ -24,6 +24,7 @@ public class BibliotecaApp {
     private static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
     private static final String SUCCESSFULLY_CHECKOUT_BOOK = "Thank you! Enjoy the book";
     private static final String UNSUCCESSFULLY_CHECKOUT_BOOK = "Sorry, that book is not available";
+    public static final String SUCCESSFULLY_RETURN_BOOK = "Thank you for returning the book";
 
     private Printer printer;
     private InputService inputService;
@@ -81,7 +82,11 @@ public class BibliotecaApp {
     }
 
     private void returnBook(String bookName) {
-        bookService.returnBook(bookName);
+        boolean returnResult = bookService.returnBook(bookName);
+
+        if (returnResult) {
+            printer.print(Collections.singletonList(SUCCESSFULLY_RETURN_BOOK));
+        }
     }
 
     private void checkoutBook(String bookName) {
