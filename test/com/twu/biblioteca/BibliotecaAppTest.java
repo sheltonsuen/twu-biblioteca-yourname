@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.service.Impl.SpyPrinter;
+import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import com.twu.biblioteca.utils.Injector;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +16,8 @@ public class BibliotecaAppTest {
     @Before
     public void setup() {
         Injector.getInstance().setPrinter(spyPrinter);
+        Injector.getInstance().setInputService(() -> 1);
+        Injector.getInstance().setBookService(new BookServiceMockImpl());
 
         Injector.getInstance().injectDependencies(bibliotecaApp);
     }
@@ -39,5 +42,16 @@ public class BibliotecaAppTest {
                 "book list followed after welcome message",
                 "List of books",
                 spyPrinter.getPrintCalls().get(1).get(0));
+    }
+
+    @Test
+    public void should_see_a_list_of_book_information_when_input_menu_option_1() {
+
+
+        bibliotecaApp.run();
+
+        int actualResult = spyPrinter.getPrintCalls().get(2).size();
+
+        assertEquals("Books count", 4, actualResult);
     }
 }
