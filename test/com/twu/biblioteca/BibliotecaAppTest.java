@@ -33,16 +33,13 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void should_see_all_books_after_welcome_message() {
+    public void should_see_main_menu_of_options_after_welcome_message() {
         BibliotecaApp.main(new String[0]);
 
         assertEquals(
                 "book list followed after welcome message",
                 "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!\n" +
-                        "Romance of the Three Kingdoms    Luo Guanzhong    1400\n" +
-                        "Journey to the West Wu    Cheng'en    1503\n" +
-                        "A Dream in Red Mansions    Cao Xueqin    1763\n" +
-                        "Water Margin    Shi Nai'an    1370\n",
+                        "List of books\n",
                 mockOutputStream.toString());
     }
 
