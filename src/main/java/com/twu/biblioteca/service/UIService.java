@@ -13,4 +13,6 @@ public interface UIService {
     void showInvalidOptionsMessage();
 
     void showBookList(List<Describable> bookList);
+
+    void showCheckoutBookHint(Boolean result);
 }

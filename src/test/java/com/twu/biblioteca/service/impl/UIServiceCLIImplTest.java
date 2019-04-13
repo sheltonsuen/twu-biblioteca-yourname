@@ -69,6 +69,28 @@ public class UIServiceCLIImplTest {
                 spyPrinter.getPrintCalls().get(0).get(1));
     }
 
+    @Test
+    public void should_print_checkout_success_message_when_success() {
+        withServices();
+
+        uiServiceCLI.showCheckoutBookHint(true);
+
+        assertEquals("checkout success",
+                "Thank you! Enjoy the book",
+                spyPrinter.getPrintCalls().get(0).get(0));
+    }
+
+    @Test
+    public void should_print_checkout_failed_message_when_fails() {
+        withServices();
+
+        uiServiceCLI.showCheckoutBookHint(false);
+
+        assertEquals("checkout fails",
+                "Sorry, that book is not available",
+                spyPrinter.getPrintCalls().get(0).get(0));
+    }
+
     void withServices() {
         uiServiceCLI = new UIServiceCLIImpl();
         spyPrinter = new SpyPrinter();

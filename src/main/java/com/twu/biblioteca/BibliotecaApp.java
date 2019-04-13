@@ -64,7 +64,7 @@ public class BibliotecaApp {
                 uiService.showBookList(borrowAbleService.listAll());
                 break;
             case 2:
-                checkoutBook(inputService.inputBookName());
+                uiService.showCheckoutBookHint(borrowAbleService.checkout(inputService.inputBookName()));
                 break;
             case 3:
                 returnBook(inputService.inputBookName());
@@ -84,16 +84,5 @@ public class BibliotecaApp {
         }
 
         printer.print(Collections.singletonList(SUCCESSFULLY_RETURN_BOOK));
-    }
-
-    private void checkoutBook(String bookName) {
-        boolean checkoutSuccess = borrowAbleService.checkout(bookName);
-
-        if (!checkoutSuccess) {
-            printer.print(Collections.singletonList(UNSUCCESSFULLY_CHECKOUT_BOOK));
-            return;
-        }
-
-        printer.print(Collections.singletonList(SUCCESSFULLY_CHECKOUT_BOOK));
     }
 }

@@ -7,6 +7,7 @@ import com.twu.biblioteca.service.UIService;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,5 +35,12 @@ public class UIServiceCLIImpl implements UIService {
     @Override
     public void showBookList(List<Describable> bookList) {
         printer.print(bookList.stream().map(Describable::briefSelfIntroduce).collect(Collectors.toList()));
+    }
+
+    @Override
+    public void showCheckoutBookHint(Boolean result) {
+        printer.print(Collections.singletonList(result
+                ? ApplicationContant.SUCCESSFULLY_CHECKOUT_BOOK
+                : ApplicationContant.UNSUCCESSFULLY_CHECKOUT_BOOK));
     }
 }
