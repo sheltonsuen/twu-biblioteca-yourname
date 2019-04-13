@@ -15,8 +15,10 @@ public class ApplicationContant {
     public static final String WELCOME_MESSAGE = "*   Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!   *";
 
     public static final List<String> MENU_OPTIONS = Arrays.asList(
-            "1. List of books",
-            "2. Checkout Book",
-            "3. Return Book",
-            "4. Quit");
+            "**************************",
+            "*    1. List of books    *",
+            "*    2. Checkout Book    *",
+            "*    3. Return Book      *",
+            "*    4. Quit             *",
+            "**************************");
 }

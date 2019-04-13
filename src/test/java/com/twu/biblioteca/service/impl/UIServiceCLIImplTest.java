@@ -27,7 +27,7 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showMenuOptions();
 
         assertEquals("menu options",
-                4,
+                6,
                 spyPrinter.getPrintCalls().get(0).size());
     }
 

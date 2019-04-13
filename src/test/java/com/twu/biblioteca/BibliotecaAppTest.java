@@ -43,8 +43,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "book list followed after welcome message",
-                "1. List of books",
-                spyPrinter.getPrintCalls().get(1).get(0));
+                "*    1. List of books    *",
+                spyPrinter.getPrintCalls().get(1).get(1));
     }
 
     @Test
@@ -76,8 +76,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "quit option followed after book list",
-                "4. Quit",
-                spyPrinter.getPrintCalls().get(1).get(3));
+                "*    4. Quit             *",
+                spyPrinter.getPrintCalls().get(1).get(4));
     }
 
     @Test
@@ -108,8 +108,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "quit option followed after book list",
-                "2. Checkout Book",
-                spyPrinter.getPrintCalls().get(1).get(1));
+                "*    2. Checkout Book    *",
+                spyPrinter.getPrintCalls().get(1).get(2));
     }
 
     @Test
@@ -166,8 +166,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "return option",
-                "3. Return Book",
-                spyPrinter.getPrintCalls().get(1).get(2));
+                "*    3. Return Book      *",
+                spyPrinter.getPrintCalls().get(1).get(3));
     }
 
     @Test
@@ -179,7 +179,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books count",
                 4,
-                spyPrinter.getPrintCalls().get(5).size());
+                spyPrinter.getPrintCalls().get(6).size());
     }
 
     @Test
