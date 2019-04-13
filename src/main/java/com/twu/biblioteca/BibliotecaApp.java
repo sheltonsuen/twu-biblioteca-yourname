@@ -7,6 +7,8 @@ import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import com.twu.biblioteca.service.impl.CLIPrinter;
 import com.twu.biblioteca.service.impl.InputServiceImpl;
 import com.twu.biblioteca.utils.Injector;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 
 import static com.twu.biblioteca.consts.ApplicationContant.*;
 
+@Setter
+@Getter
 public class BibliotecaApp {
     private Printer printer;
     private InputService inputService;
@@ -101,29 +105,5 @@ public class BibliotecaApp {
                 .collect(Collectors.toList());
 
         printer.print(bookList);
-    }
-
-    public Printer getPrinter() {
-        return printer;
-    }
-
-    public InputService getInputService() {
-        return inputService;
-    }
-
-    public BookService getBookService() {
-        return bookService;
-    }
-
-    public void setPrinter(Printer printer) {
-        this.printer = printer;
-    }
-
-    public void setInputService(InputService inputService) {
-        this.inputService = inputService;
-    }
-
-    public void setBookService(BookService bookService) {
-        this.bookService = bookService;
     }
 }

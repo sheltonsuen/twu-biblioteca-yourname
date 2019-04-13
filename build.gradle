@@ -26,6 +26,9 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
+
+    compileOnly("org.projectlombok:lombok:1.16.10")
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
 }
 
 // Define the main class for the application

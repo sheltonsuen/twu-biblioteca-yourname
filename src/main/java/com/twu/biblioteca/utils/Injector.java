@@ -4,7 +4,9 @@ import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.InputService;
 import com.twu.biblioteca.service.Printer;
+import lombok.Setter;
 
+@Setter
 public class Injector {
 
     private static Injector instance;
@@ -28,17 +30,5 @@ public class Injector {
         bibliotecaApp.setPrinter(this.printer);
         bibliotecaApp.setInputService(this.inputService);
         bibliotecaApp.setBookService(this.bookService);
-    }
-
-    public void setPrinter(Printer printer) {
-        this.printer = printer;
-    }
-
-    public void setInputService(InputService inputService) {
-        this.inputService = inputService;
-    }
-
-    public void setBookService(BookService bookService) {
-        this.bookService = bookService;
     }
 }
