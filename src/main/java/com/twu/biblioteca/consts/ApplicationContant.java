@@ -10,8 +10,12 @@ public class ApplicationContant {
     public static final String SUCCESSFULLY_RETURN_BOOK = "Thank you for returning the book";
     public static final String UNSUCCESSFULLY_RETURN_BOOK = "This is not a valid book to return";
 
-    public static final String WELCOME_VERTICAL_LACE = "**************************************************************************************";
-    public static final String WELCOME_MESSAGE = "*   Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!   *";
+    public static final List<String> WELCOME_MESSAGE = Arrays.asList(
+            "****************************************************************",
+            "*                    Welcome to Biblioteca                     *",
+            "*    Your one-stop-shop for great book titles in Biblioteca!   *",
+            "****************************************************************"
+    );
 
     public static final List<String> MENU_OPTIONS = Arrays.asList(
             "**************************",
