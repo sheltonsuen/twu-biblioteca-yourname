@@ -1,8 +1,7 @@
-package com.twu.biblioteca.service.Impl;
+package com.twu.biblioteca.service.impl;
 
 import com.twu.biblioteca.domain.Describable;
 import com.twu.biblioteca.service.BorrowAbleService;
-import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import org.junit.Test;
 
 import java.util.List;

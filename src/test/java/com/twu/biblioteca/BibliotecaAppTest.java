@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.service.Impl.MockInputService;
-import com.twu.biblioteca.service.Impl.SpyPrinter;
+import com.twu.biblioteca.service.impl.MockInputService;
+import com.twu.biblioteca.service.impl.SpyPrinter;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import com.twu.biblioteca.utils.Injector;
 import org.junit.Before;

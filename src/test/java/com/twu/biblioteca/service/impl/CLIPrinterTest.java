@@ -1,7 +1,6 @@
-package com.twu.biblioteca.service.Impl;
+package com.twu.biblioteca.service.impl;
 
 import com.twu.biblioteca.service.Printer;
-import com.twu.biblioteca.service.impl.CLIPrinter;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
