@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.service.Impl.MockInputService;
 import com.twu.biblioteca.service.Impl.SpyPrinter;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import com.twu.biblioteca.utils.Injector;
@@ -7,26 +8,25 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import static junit.framework.TestCase.assertEquals;
 
 public class BibliotecaAppTest {
 
     private BibliotecaApp bibliotecaApp = new BibliotecaApp();
     private SpyPrinter spyPrinter = new SpyPrinter();
-    private Integer mockOptionalNumber = 1;
 
     @Before
     public void setup() {
         Injector.getInstance().setPrinter(spyPrinter);
-        Injector.getInstance().setInputService(() -> mockOptionalNumber++);
         Injector.getInstance().setBookService(new BookServiceMockImpl());
-
-        Injector.getInstance().injectDependencies(bibliotecaApp);
     }
 
     @Test
     public void should_see_welcome_message_when_start_the_application() {
-        mockOptionalNumber = 1;
+        withInput(Collections.singletonList(3), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -40,7 +40,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_book_list_option_after_welcome_message() {
-        mockOptionalNumber = 1;
+        withInput(Collections.singletonList(3), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -52,7 +52,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_list_of_book_information_when_input_menu_option_1() {
-        mockOptionalNumber = 1;
+        withInput(Arrays.asList(1, 3), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -62,9 +62,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_notification_when_chose_an_invalid_option() {
-        mockOptionalNumber = 0;
-        Injector.getInstance().setInputService(() -> mockOptionalNumber++);
-        Injector.getInstance().injectDependencies(bibliotecaApp);
+        withInput(Arrays.asList(0, 3), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -75,7 +73,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_quit_option_after_book_list() {
-        mockOptionalNumber = 3;
+        withInput(Collections.singletonList(3), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -87,17 +85,14 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_quit_after_chose_quit_option() {
-        Injector.getInstance().setInputService(() -> 3);
-        Injector.getInstance().injectDependencies(bibliotecaApp);
+        withInput(Collections.singletonList(3), Collections.emptyList());
 
         bibliotecaApp.run();
     }
 
     @Test
     public void should_can_select_again_when_not_quit() {
-        mockOptionalNumber = 0;
-        Injector.getInstance().setInputService(() -> mockOptionalNumber++);
-        Injector.getInstance().injectDependencies(bibliotecaApp);
+        withInput(Arrays.asList(0, 1, 2, 3), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -106,18 +101,25 @@ public class BibliotecaAppTest {
                 spyPrinter.getPrintCalls().get(2).get(0));
 
         assertEquals("book list count", 4, spyPrinter.getPrintCalls().get(4).size());
-
-        mockOptionalNumber = 0;
     }
 
     @Test
     public void should_see_checkout_optional() {
-        mockOptionalNumber = 2;
+        withInput(Collections.singletonList(3), Collections.emptyList());
+
         bibliotecaApp.run();
 
         assertEquals(
                 "quit option followed after book list",
                 "2. Checkout Book",
                 spyPrinter.getPrintCalls().get(1).get(1));
+    }
+
+    void withInput(List<Integer> options, List<String> bookNames) {
+        Queue<Integer> optionsQueue = new ArrayDeque<>(options);
+        Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
+        MockInputService mockInputService = new MockInputService(optionsQueue, bookNamesQueue);
+        Injector.getInstance().setInputService(mockInputService);
+        Injector.getInstance().injectDependencies(bibliotecaApp);
     }
 }
