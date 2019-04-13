@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.domain.Describable;
+import com.twu.biblioteca.service.BorrowAbleService;
 import com.twu.biblioteca.service.InputService;
 import com.twu.biblioteca.service.Printer;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
@@ -22,13 +23,13 @@ import static com.twu.biblioteca.consts.ApplicationContant.*;
 public class BibliotecaApp {
     private Printer printer;
     private InputService inputService;
-    private BookService bookService;
+    private BorrowAbleService borrowAbleService;
 
     public static void main(String[] args) {
         Injector injector = Injector.getInstance();
         injector.setPrinter(new CLIPrinter());
         injector.setInputService(new InputServiceImpl());
-        injector.setBookService(new BookServiceMockImpl());
+        injector.setBorrowAbleService(new BookServiceMockImpl());
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
@@ -76,7 +77,7 @@ public class BibliotecaApp {
     }
 
     private void returnBook(String bookName) {
-        boolean returnResult = bookService.returnBook(bookName);
+        boolean returnResult = borrowAbleService.returnBook(bookName);
 
         if (!returnResult) {
             printer.print(Collections.singletonList(UNSUCCESSFULLY_RETURN_BOOK));
@@ -87,7 +88,7 @@ public class BibliotecaApp {
     }
 
     private void checkoutBook(String bookName) {
-        boolean checkoutSuccess = bookService.checkout(bookName);
+        boolean checkoutSuccess = borrowAbleService.checkout(bookName);
 
         if (!checkoutSuccess) {
             printer.print(Collections.singletonList(UNSUCCESSFULLY_CHECKOUT_BOOK));
@@ -98,10 +99,10 @@ public class BibliotecaApp {
     }
 
     private void printBookList() {
-        List<String> bookList = bookService
+        List<String> bookList = borrowAbleService
                 .listAll()
                 .stream()
-                .map(book -> book.getName() + BOOK_INFO_SLICER + book.getAuthor() + BOOK_INFO_SLICER + book.getYearOfPublished())
+                .map(Describable::briefSelfIntroduce)
                 .collect(Collectors.toList());
 
         printer.print(bookList);

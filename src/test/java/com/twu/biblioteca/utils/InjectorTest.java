@@ -47,11 +47,11 @@ public class InjectorTest {
         Injector injector = Injector.getInstance();
         injector.setPrinter(new SpyPrinter());
         injector.setInputService(new InputServiceImpl());
-        injector.setBookService(new BookServiceMockImpl());
+        injector.setBorrowAbleService(new BookServiceMockImpl());
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         injector.injectDependencies(bibliotecaApp);
 
-        assertNotNull(bibliotecaApp.getBookService());
+        assertNotNull(bibliotecaApp.getBorrowAbleService());
     }
 }

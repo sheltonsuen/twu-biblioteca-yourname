@@ -1,13 +1,14 @@
 package com.twu.biblioteca.service.impl;
 
-import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.domain.Describable;
+import com.twu.biblioteca.service.BorrowAbleService;
 import com.twu.biblioteca.domain.Book;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BookServiceMockImpl implements BookService {
+public class BookServiceMockImpl implements BorrowAbleService {
 
     private List<Book> BOOK_LIST = Arrays.asList(
             new Book("Romance of the Three Kingdoms", "Luo Guanzhong", 1400),
@@ -16,7 +17,7 @@ public class BookServiceMockImpl implements BookService {
             new Book("Water Margin", "Shi Nai'an", 1370));
 
     @Override
-    public List<Book> listAll() {
+    public List<Describable> listAll() {
         return BOOK_LIST.stream().filter(Book::getAvailable).collect(Collectors.toList());
     }
 

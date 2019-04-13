@@ -195,7 +195,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_unsuccessful_message_when_return_book_unsuccessfully() {
-        withInput(Arrays.asList(2, 3, 4), Arrays.asList("Journey to the West Wu", "Wrong Book"));
+        withInput(Arrays.asList(2, 3, 4), Arrays.asList("Journey to the West Wu", "Wrong BookTest"));
 
         bibliotecaApp.run();
 
@@ -211,7 +211,7 @@ public class BibliotecaAppTest {
         MockInputService mockInputService = new MockInputService(optionsQueue, bookNamesQueue);
         Injector.getInstance().setInputService(mockInputService);
 
-        Injector.getInstance().setBookService(new BookServiceMockImpl());
+        Injector.getInstance().setBorrowAbleService(new BookServiceMockImpl());
 
         spyPrinter = new SpyPrinter();
         Injector.getInstance().setPrinter(spyPrinter);

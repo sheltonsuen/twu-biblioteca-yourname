@@ -2,8 +2,10 @@ package com.twu.biblioteca.domain;
 
 import lombok.Data;
 
+import static com.twu.biblioteca.consts.ApplicationContant.BOOK_INFO_SLICER;
+
 @Data
-public class Book {
+public class Book implements Describable {
 
     private String name;
     private String author;
@@ -15,5 +17,10 @@ public class Book {
         this.author = author;
         this.yearOfPublished = yearOfPublished;
         this.available = true;
+    }
+
+    @Override
+    public String briefSelfIntroduce() {
+        return this.name + BOOK_INFO_SLICER + this.author + BOOK_INFO_SLICER + this.yearOfPublished;
     }
 }

@@ -1,12 +1,12 @@
 package com.twu.biblioteca.service;
 
-import com.twu.biblioteca.domain.Book;
+import com.twu.biblioteca.domain.Describable;
 
 import java.util.List;
 
-public interface BookService {
+public interface BorrowAbleService {
 
-    List<Book> listAll();
+    List<Describable> listAll();
 
     boolean checkout(String name);
 
