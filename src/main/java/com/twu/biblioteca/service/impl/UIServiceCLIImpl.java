@@ -29,6 +29,6 @@ public class UIServiceCLIImpl implements UIService {
 
     @Override
     public void showInvalidOptionsMessage() {
-        printer.print(Arrays.asList(ApplicationContant.INVALID_OPTION_NOTIFICATION));
+        printer.print(ApplicationContant.INVALID_OPTION_MESSAGE);
     }
 }

@@ -38,8 +38,8 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showInvalidOptionsMessage();
 
         assertEquals("invalid option message",
-                "Please select a valid option!",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 
     void withServices() {

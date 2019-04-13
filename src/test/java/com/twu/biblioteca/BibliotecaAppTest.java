@@ -63,9 +63,9 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        String actualResult = spyPrinter.getPrintCalls().get(2).get(0);
+        String actualResult = spyPrinter.getPrintCalls().get(2).get(1);
 
-        assertEquals("Invalid menu options message", "Please select a valid option!", actualResult);
+        assertEquals("Invalid menu options message", "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *", actualResult);
     }
 
     @Test
@@ -94,8 +94,8 @@ public class BibliotecaAppTest {
         bibliotecaApp.run();
 
         assertEquals("invalid option",
-                "Please select a valid option!",
-                spyPrinter.getPrintCalls().get(2).get(0));
+                "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
+                spyPrinter.getPrintCalls().get(2).get(1));
 
         assertEquals("book list count", 4, spyPrinter.getPrintCalls().get(4).size());
     }

@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ApplicationContant {
     public static final String BOOK_INFO_SLICER = "    ";
-    public static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
     public static final String SUCCESSFULLY_CHECKOUT_BOOK = "Thank you! Enjoy the book";
     public static final String UNSUCCESSFULLY_CHECKOUT_BOOK = "Sorry, that book is not available";
     public static final String SUCCESSFULLY_RETURN_BOOK = "Thank you for returning the book";
@@ -21,4 +20,10 @@ public class ApplicationContant {
             "*    3. Return Book      *",
             "*    4. Quit             *",
             "**************************");
+
+    public static final List<String> INVALID_OPTION_MESSAGE = Arrays.asList(
+            "**************************************************",
+            "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
+            "**************************************************"
+    );
 }
