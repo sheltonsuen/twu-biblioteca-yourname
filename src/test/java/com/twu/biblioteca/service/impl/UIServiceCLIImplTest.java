@@ -91,6 +91,28 @@ public class UIServiceCLIImplTest {
                 spyPrinter.getPrintCalls().get(0).get(0));
     }
 
+    @Test
+    public void should_print_return_book_success_message_when_success() {
+        withServices();
+
+        uiServiceCLI.showReturnBookHint(true);
+
+        assertEquals("checkout success",
+                "Thank you for returning the book",
+                spyPrinter.getPrintCalls().get(0).get(0));
+    }
+
+    @Test
+    public void should_print_return_book_failed_message_when_fails() {
+        withServices();
+
+        uiServiceCLI.showReturnBookHint(false);
+
+        assertEquals("checkout fails",
+                "This is not a valid book to return",
+                spyPrinter.getPrintCalls().get(0).get(0));
+    }
+
     void withServices() {
         uiServiceCLI = new UIServiceCLIImpl();
         spyPrinter = new SpyPrinter();

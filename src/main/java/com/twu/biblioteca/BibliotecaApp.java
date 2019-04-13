@@ -67,22 +67,11 @@ public class BibliotecaApp {
                 uiService.showCheckoutBookHint(borrowAbleService.checkout(inputService.inputBookName()));
                 break;
             case 3:
-                returnBook(inputService.inputBookName());
+                uiService.showReturnBookHint(borrowAbleService.returnBook(inputService.inputBookName()));
                 break;
             default:
                 uiService.showInvalidOptionsMessage();
                 break;
         }
-    }
-
-    private void returnBook(String bookName) {
-        boolean returnResult = borrowAbleService.returnBook(bookName);
-
-        if (!returnResult) {
-            printer.print(Collections.singletonList(UNSUCCESSFULLY_RETURN_BOOK));
-            return;
-        }
-
-        printer.print(Collections.singletonList(SUCCESSFULLY_RETURN_BOOK));
     }
 }
