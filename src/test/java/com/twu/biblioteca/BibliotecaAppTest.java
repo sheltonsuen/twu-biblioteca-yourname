@@ -27,11 +27,11 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        String actualResult = spyPrinter.getPrintCalls().get(0).get(0);
+        String actualResult = spyPrinter.getPrintCalls().get(0).get(1);
 
         assertEquals(
                 "welcome message",
-                "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!",
+                "*   Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!   *",
                 actualResult);
     }
 

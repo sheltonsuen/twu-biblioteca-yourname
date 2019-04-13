@@ -6,7 +6,7 @@ import com.twu.biblioteca.service.UIService;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collections;
+import java.util.Arrays;
 
 @Setter
 @Getter
@@ -16,6 +16,9 @@ public class UIServiceCLIImpl implements UIService {
 
     @Override
     public void showWelcomeMessage() {
-        printer.print(Collections.singletonList(ApplicationContant.WELCOME_MESSAGE));
+        printer.print(Arrays.asList(
+                ApplicationContant.WELCOME_VERTICAL_LACE,
+                ApplicationContant.WELCOME_MESSAGE,
+                ApplicationContant.WELCOME_VERTICAL_LACE));
     }
 }

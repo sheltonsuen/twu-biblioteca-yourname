@@ -17,7 +17,7 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showWelcomeMessage();
 
         assertEquals("welcome message",
-                "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*   Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!   *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 }
