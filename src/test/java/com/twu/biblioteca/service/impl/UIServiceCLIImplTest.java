@@ -76,8 +76,8 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showCheckoutBookHint(true);
 
         assertEquals("checkout success",
-                "Thank you! Enjoy the book",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*    （｡ò ∀ ó｡）  Thank you! Enjoy the book    *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 
     @Test
@@ -87,8 +87,8 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showCheckoutBookHint(false);
 
         assertEquals("checkout fails",
-                "Sorry, that book is not available",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*    ( ‾̮‿͂‾̮ ꐦ)    Sorry, that book is not available    *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 
     @Test

@@ -39,9 +39,9 @@ public class UIServiceCLIImpl implements UIService {
 
     @Override
     public void showCheckoutBookHint(Boolean result) {
-        printer.print(Collections.singletonList(result
+        printer.print(result
                 ? ApplicationContant.SUCCESSFULLY_CHECKOUT_BOOK
-                : ApplicationContant.UNSUCCESSFULLY_CHECKOUT_BOOK));
+                : ApplicationContant.UNSUCCESSFULLY_CHECKOUT_BOOK);
     }
 
     @Override

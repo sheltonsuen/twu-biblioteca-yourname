@@ -137,8 +137,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "success checkout message",
-                "Thank you! Enjoy the book",
-                spyPrinter.getPrintCalls().get(2).get(0));
+                "*    （｡ò ∀ ó｡）  Thank you! Enjoy the book    *",
+                spyPrinter.getPrintCalls().get(2).get(1));
 
         assertEquals(
                 "books list count",
@@ -154,8 +154,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "success checkout message",
-                "Sorry, that book is not available",
-                spyPrinter.getPrintCalls().get(2).get(0));
+                "*    ( ‾̮‿͂‾̮ ꐦ)    Sorry, that book is not available    *",
+                spyPrinter.getPrintCalls().get(2).get(1));
 
         assertEquals(
                 "books list count",
