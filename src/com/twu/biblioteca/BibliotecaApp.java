@@ -71,10 +71,17 @@ public class BibliotecaApp {
             case 2:
                 checkoutBook(inputService.inputBookName());
                 break;
+            case 3:
+                returnBook(inputService.inputBookName());
+                break;
             default:
                 printer.print(Collections.singletonList(INVALID_OPTION_NOTIFICATION));
                 break;
         }
+    }
+
+    private void returnBook(String bookName) {
+        bookService.returnBook(bookName);
     }
 
     private void checkoutBook(String bookName) {
