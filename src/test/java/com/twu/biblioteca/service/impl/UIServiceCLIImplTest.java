@@ -1,6 +1,10 @@
 package com.twu.biblioteca.service.impl;
 
+import com.twu.biblioteca.domain.Book;
+import com.twu.biblioteca.domain.Describable;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -47,6 +51,21 @@ public class UIServiceCLIImplTest {
 
         assertEquals("invalid option message",
                 "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
+                spyPrinter.getPrintCalls().get(0).get(1));
+    }
+
+    @Test
+    public void should_print_book_list_brief_intro() {
+        withServices();
+        Describable describable = new Book("Test Book", "Test Author", 1999);
+
+        uiServiceCLI.showBookList(Arrays.asList(describable, describable));
+
+        assertEquals("book list",
+                "Test Book    Test Author    1999",
+                spyPrinter.getPrintCalls().get(0).get(0));
+        assertEquals("book list",
+                "Test Book    Test Author    1999",
                 spyPrinter.getPrintCalls().get(0).get(1));
     }
 

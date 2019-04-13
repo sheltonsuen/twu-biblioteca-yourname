@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.domain.Describable;
 import com.twu.biblioteca.service.BorrowAbleService;
 import com.twu.biblioteca.service.InputService;
 import com.twu.biblioteca.service.Printer;
@@ -13,10 +12,7 @@ import com.twu.biblioteca.utils.Injector;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.twu.biblioteca.consts.ApplicationContant.*;
 
@@ -65,7 +61,7 @@ public class BibliotecaApp {
     private void startOption(Integer optionNumber) {
         switch (optionNumber) {
             case 1:
-                printBookList();
+                uiService.showBookList(borrowAbleService.listAll());
                 break;
             case 2:
                 checkoutBook(inputService.inputBookName());
@@ -99,15 +95,5 @@ public class BibliotecaApp {
         }
 
         printer.print(Collections.singletonList(SUCCESSFULLY_CHECKOUT_BOOK));
-    }
-
-    private void printBookList() {
-        List<String> bookList = borrowAbleService
-                .listAll()
-                .stream()
-                .map(Describable::briefSelfIntroduce)
-                .collect(Collectors.toList());
-
-        printer.print(bookList);
     }
 }

@@ -1,10 +1,14 @@
 package com.twu.biblioteca.service.impl;
 
 import com.twu.biblioteca.consts.ApplicationContant;
+import com.twu.biblioteca.domain.Describable;
 import com.twu.biblioteca.service.Printer;
 import com.twu.biblioteca.service.UIService;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Setter
 @Getter
@@ -25,5 +29,10 @@ public class UIServiceCLIImpl implements UIService {
     @Override
     public void showInvalidOptionsMessage() {
         printer.print(ApplicationContant.INVALID_OPTION_MESSAGE);
+    }
+
+    @Override
+    public void showBookList(List<Describable> bookList) {
+        printer.print(bookList.stream().map(Describable::briefSelfIntroduce).collect(Collectors.toList()));
     }
 }
