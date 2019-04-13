@@ -193,6 +193,18 @@ public class BibliotecaAppTest {
                 spyPrinter.getPrintCalls().get(4).get(0));
     }
 
+    @Test
+    public void should_display_unsuccessful_message_when_return_book_unsuccessfully() {
+        withInput(Arrays.asList(2, 3, 4), Arrays.asList("Journey to the West Wu", "Wrong Book"));
+
+        bibliotecaApp.run();
+
+        assertEquals(
+                "books count",
+                "This is not a valid book to return",
+                spyPrinter.getPrintCalls().get(4).get(0));
+    }
+
     void withInput(List<Integer> options, List<String> bookNames) {
         Queue<Integer> optionsQueue = new ArrayDeque<>(options);
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
