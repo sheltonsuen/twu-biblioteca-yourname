@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 
 public class BibliotecaApp {
 
-    private static final String LIST_OF_BOOKS = "List of books";
-    private static final String QUIT = "Quit";
+    private static final String LIST_OF_BOOKS = "1. List of books";
+    private static final String QUIT = "2. Quit";
     private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!";
     private static final String BOOK_INFO_SLICER = "    ";
     private static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
@@ -42,14 +42,24 @@ public class BibliotecaApp {
 
         printer.print(Collections.singletonList(WELCOME_MESSAGE));
 
-        printer.print(Arrays.asList(LIST_OF_BOOKS, QUIT));
-
-        Integer optionNumber = inputService.inputMenuOptionNumber();
-
-        startMenu(optionNumber);
+        loopMenuUntilQuit();
     }
 
-    private void startMenu(Integer optionNumber) {
+    private void loopMenuUntilQuit() {
+        while (true) {
+            printer.print(Arrays.asList(LIST_OF_BOOKS, QUIT));
+
+            Integer optionNumber = inputService.inputMenuOptionNumber();
+
+            if (optionNumber == 2) {
+                break;
+            }
+
+            startOption(optionNumber);
+        }
+    }
+
+    private void startOption(Integer optionNumber) {
         if (optionNumber == 1) {
             printBookList();
             return;
