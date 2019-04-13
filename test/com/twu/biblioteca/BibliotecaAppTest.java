@@ -35,7 +35,7 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void should_see_main_menu_of_options_after_welcome_message() {
+    public void should_see_book_list_option_after_welcome_message() {
         bibliotecaApp.run();
 
         assertEquals(
@@ -63,5 +63,15 @@ public class BibliotecaAppTest {
         String actualResult = spyPrinter.getPrintCalls().get(2).get(0);
 
         assertEquals("Invalid menu options message", "Please select a valid option!", actualResult);
+    }
+
+    @Test
+    public void should_see_quit_option_after_book_list() {
+        bibliotecaApp.run();
+
+        assertEquals(
+                "quit option followed after book list",
+                "Quit",
+                spyPrinter.getPrintCalls().get(1).get(1));
     }
 }
