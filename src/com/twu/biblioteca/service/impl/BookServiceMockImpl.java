@@ -17,14 +17,30 @@ public class BookServiceMockImpl implements BookService {
 
     @Override
     public List<Book> listAll() {
-        return BOOK_LIST;
+        return BOOK_LIST.stream().filter(Book::getAvailable).collect(Collectors.toList());
     }
 
     @Override
     public boolean checkout(String name) {
-        int originalSize = BOOK_LIST.size();
+        for (Book book : BOOK_LIST) {
+            if (book.getName().equals(name)) {
+                book.setAvailable(false);
+                return true;
+            }
+        }
 
-        BOOK_LIST = BOOK_LIST.stream().filter(book -> !book.getName().equals(name)).collect(Collectors.toList());
-        return originalSize != BOOK_LIST.size();
+        return false;
+    }
+
+    @Override
+    public boolean returnBook(String name) {
+        for (Book book : BOOK_LIST) {
+            if (book.getName().equals(name)) {
+                book.setAvailable(true);
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -9,4 +9,6 @@ public interface BookService {
     List<Book> listAll();
 
     boolean checkout(String name);
+
+    boolean returnBook(String name);
 }
