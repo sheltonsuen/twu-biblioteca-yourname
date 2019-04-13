@@ -39,10 +39,10 @@ public class BibliotecaAppTest {
         assertEquals(
                 "book list followed after welcome message",
                 "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!\n" +
-                        "Romance of the Three Kingdoms\n" +
-                        "Journey to the West\n" +
-                        "A Dream in Red Mansions\n" +
-                        "Water Margin\n",
+                        "Romance of the Three Kingdoms    Luo Guanzhong    1400\n" +
+                        "Journey to the West Wu    Cheng'en    1503\n" +
+                        "A Dream in Red Mansions    Cao Xueqin    1763\n" +
+                        "Water Margin    Shi Nai'an    1370\n",
                 mockOutputStream.toString());
     }
 
