@@ -14,11 +14,10 @@ import static junit.framework.TestCase.assertEquals;
 public class BibliotecaAppTest {
 
     private BibliotecaApp bibliotecaApp = new BibliotecaApp();
-    private SpyPrinter spyPrinter = new SpyPrinter();
+    private SpyPrinter spyPrinter;
 
     @Before
     public void setup() {
-        Injector.getInstance().setPrinter(spyPrinter);
     }
 
     @Test
@@ -124,6 +123,23 @@ public class BibliotecaAppTest {
                 spyPrinter.getPrintCalls().get(4).size());
     }
 
+    @Test
+    public void should_show_success_message_when_checkout_book_successfully() {
+        withInput(Arrays.asList(2, 1, 3), Collections.singletonList("Journey to the West Wu"));
+
+        bibliotecaApp.run();
+
+        assertEquals(
+                "success checkout message",
+                "Thank you! Enjoy the book",
+                spyPrinter.getPrintCalls().get(2).get(0));
+
+        assertEquals(
+                "books list count",
+                3,
+                spyPrinter.getPrintCalls().get(4).size());
+    }
+
     void withInput(List<Integer> options, List<String> bookNames) {
         Queue<Integer> optionsQueue = new ArrayDeque<>(options);
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
@@ -131,6 +147,9 @@ public class BibliotecaAppTest {
         Injector.getInstance().setInputService(mockInputService);
 
         Injector.getInstance().setBookService(new BookServiceMockImpl());
+
+        spyPrinter = new SpyPrinter();
+        Injector.getInstance().setPrinter(spyPrinter);
 
         Injector.getInstance().injectDependencies(bibliotecaApp);
     }

@@ -21,6 +21,7 @@ public class BibliotecaApp {
     private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!";
     private static final String BOOK_INFO_SLICER = "    ";
     private static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
+    public static final String SUCCESSFULLY_CHECKOUT_BOOK = "Thank you! Enjoy the book";
 
     private Printer printer;
     private InputService inputService;
@@ -75,7 +76,11 @@ public class BibliotecaApp {
     }
 
     private void checkoutBook(String bookName) {
-        bookService.checkout(bookName);
+        boolean result = bookService.checkout(bookName);
+
+        if (result) {
+            printer.print(Collections.singletonList(SUCCESSFULLY_CHECKOUT_BOOK));
+        }
     }
 
     private void printBookList() {
