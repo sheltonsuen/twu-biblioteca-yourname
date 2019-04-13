@@ -31,6 +31,17 @@ public class UIServiceCLIImplTest {
                 spyPrinter.getPrintCalls().get(0).size());
     }
 
+    @Test
+    public void should_print_invalid_options_message() {
+        withServices();
+
+        uiServiceCLI.showInvalidOptionsMessage();
+
+        assertEquals("invalid option message",
+                "Please select a valid option!",
+                spyPrinter.getPrintCalls().get(0).get(0));
+    }
+
     void withServices() {
         uiServiceCLI = new UIServiceCLIImpl();
         spyPrinter = new SpyPrinter();

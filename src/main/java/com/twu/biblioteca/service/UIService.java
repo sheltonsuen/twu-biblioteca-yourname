@@ -5,4 +5,6 @@ public interface UIService {
     void showWelcomeMessage();
 
     void showMenuOptions();
+
+    void showInvalidOptionsMessage();
 }

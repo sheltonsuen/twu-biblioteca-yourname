@@ -74,7 +74,7 @@ public class BibliotecaApp {
                 returnBook(inputService.inputBookName());
                 break;
             default:
-                printer.print(Collections.singletonList(INVALID_OPTION_NOTIFICATION));
+                uiService.showInvalidOptionsMessage();
                 break;
         }
     }
