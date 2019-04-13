@@ -9,12 +9,14 @@ import com.twu.biblioteca.service.impl.InputServiceImpl;
 import com.twu.biblioteca.utils.Injector;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BibliotecaApp {
 
     private static final String LIST_OF_BOOKS = "List of books";
     private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!";
+    private static final String BOOK_INFO_SLICER = "    ";
 
     private Printer printer;
     private InputService inputService;
@@ -41,14 +43,23 @@ public class BibliotecaApp {
 
         Integer optionNumber = inputService.inputMenuOptionNumber();
 
+        startMenu(optionNumber);
+    }
+
+    private void startMenu(Integer optionNumber) {
         if (optionNumber == 1) {
-            printer.print(
-                    bookService
-                            .listAll()
-                            .stream()
-                            .map(book -> book.getName() + "    " + book.getAuthor() + "    " + book.getYearOfPublished())
-                            .collect(Collectors.toList()));
+            printBookList();
         }
+    }
+
+    private void printBookList() {
+        List<String> bookList = bookService
+                .listAll()
+                .stream()
+                .map(book -> book.getName() + BOOK_INFO_SLICER + book.getAuthor() + BOOK_INFO_SLICER + book.getYearOfPublished())
+                .collect(Collectors.toList());
+
+        printer.print(bookList);
     }
 
     public Printer getPrinter() {
