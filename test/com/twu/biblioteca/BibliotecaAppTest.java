@@ -140,6 +140,23 @@ public class BibliotecaAppTest {
                 spyPrinter.getPrintCalls().get(4).size());
     }
 
+    @Test
+    public void should_show_un_success_message_when_checkout_book_unsuccessfully() {
+        withInput(Arrays.asList(2, 1, 3), Collections.singletonList("No that book"));
+
+        bibliotecaApp.run();
+
+        assertEquals(
+                "success checkout message",
+                "Sorry, that book is not available",
+                spyPrinter.getPrintCalls().get(2).get(0));
+
+        assertEquals(
+                "books list count",
+                4,
+                spyPrinter.getPrintCalls().get(4).size());
+    }
+
     void withInput(List<Integer> options, List<String> bookNames) {
         Queue<Integer> optionsQueue = new ArrayDeque<>(options);
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
