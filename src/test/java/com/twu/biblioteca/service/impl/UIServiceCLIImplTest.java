@@ -98,8 +98,8 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showReturnBookHint(true);
 
         assertEquals("checkout success",
-                "Thank you for returning the book",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*    （｡ò ∀ ó｡）    Thank you for returning the book    *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 
     @Test
@@ -109,8 +109,8 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showReturnBookHint(false);
 
         assertEquals("checkout fails",
-                "This is not a valid book to return",
-                spyPrinter.getPrintCalls().get(0).get(0));
+                "*    ( ‾̮‿͂‾̮ ꐦ)    This is not a valid book to return    *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 
     void withServices() {

@@ -195,8 +195,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "books count",
-                "Thank you for returning the book",
-                spyPrinter.getPrintCalls().get(4).get(0));
+                "*    （｡ò ∀ ó｡）    Thank you for returning the book    *",
+                spyPrinter.getPrintCalls().get(4).get(1));
     }
 
     @Test
@@ -207,8 +207,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "books count",
-                "This is not a valid book to return",
-                spyPrinter.getPrintCalls().get(4).get(0));
+                "*    ( ‾̮‿͂‾̮ ꐦ)    This is not a valid book to return    *",
+                spyPrinter.getPrintCalls().get(4).get(1));
     }
 
     void withInput(List<Integer> options, List<String> bookNames) {

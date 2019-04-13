@@ -46,8 +46,8 @@ public class UIServiceCLIImpl implements UIService {
 
     @Override
     public void showReturnBookHint(Boolean result) {
-        printer.print(Collections.singletonList(result
+        printer.print(result
                 ? ApplicationContant.SUCCESSFULLY_RETURN_BOOK
-                : ApplicationContant.UNSUCCESSFULLY_RETURN_BOOK));
+                : ApplicationContant.UNSUCCESSFULLY_RETURN_BOOK);
     }
 }
