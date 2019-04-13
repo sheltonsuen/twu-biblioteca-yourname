@@ -61,12 +61,21 @@ public class BibliotecaApp {
     }
 
     private void startOption(Integer optionNumber) {
-        if (optionNumber == 1) {
-            printBookList();
-            return;
+        switch (optionNumber) {
+            case 1:
+                printBookList();
+                break;
+            case 2:
+                checkoutBook(inputService.inputBookName());
+                break;
+            default:
+                printer.print(Collections.singletonList(INVALID_OPTION_NOTIFICATION));
+                break;
         }
+    }
 
-        printer.print(Collections.singletonList(INVALID_OPTION_NOTIFICATION));
+    private void checkoutBook(String bookName) {
+        bookService.checkout(bookName);
     }
 
     private void printBookList() {

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class BookServiceMockImpl implements BookService {
 
-    private static List<Book> BOOK_LIST = Arrays.asList(
+    private List<Book> BOOK_LIST = Arrays.asList(
             new Book("Romance of the Three Kingdoms", "Luo Guanzhong", 1400),
             new Book("Journey to the West Wu", "Cheng'en", 1503),
             new Book("A Dream in Red Mansions", "Cao Xueqin", 1763),
