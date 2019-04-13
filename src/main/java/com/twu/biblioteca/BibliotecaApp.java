@@ -50,7 +50,7 @@ public class BibliotecaApp {
 
     private void loopMenuUntilQuit() {
         while (true) {
-            printer.print(Arrays.asList(LIST_OF_BOOKS, CHECKOUT_BOOK, RETURN_BOOK, QUIT));
+            uiService.showMenuOptions();
 
             Integer optionNumber = inputService.inputMenuOptionNumber();
 

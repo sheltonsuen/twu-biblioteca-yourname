@@ -21,4 +21,9 @@ public class UIServiceCLIImpl implements UIService {
                 ApplicationContant.WELCOME_MESSAGE,
                 ApplicationContant.WELCOME_VERTICAL_LACE));
     }
+
+    @Override
+    public void showMenuOptions() {
+        printer.print(ApplicationContant.MENU_OPTIONS);
+    }
 }
