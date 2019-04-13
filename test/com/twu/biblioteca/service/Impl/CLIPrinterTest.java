@@ -1,4 +1,4 @@
-package com.twu.biblioteca.DAO.Impl;
+package com.twu.biblioteca.service.Impl;
 
 import com.twu.biblioteca.service.Printer;
 import com.twu.biblioteca.service.impl.CLIPrinter;

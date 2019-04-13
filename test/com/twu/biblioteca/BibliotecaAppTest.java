@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.DAO.Impl.SpyPrinter;
+import com.twu.biblioteca.service.Impl.SpyPrinter;
 import com.twu.biblioteca.utils.Injector;
 import org.junit.Before;
 import org.junit.Test;

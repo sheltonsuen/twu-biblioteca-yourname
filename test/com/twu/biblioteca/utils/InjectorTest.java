@@ -1,7 +1,7 @@
 package com.twu.biblioteca.utils;
 
 import com.twu.biblioteca.BibliotecaApp;
-import com.twu.biblioteca.DAO.Impl.SpyPrinter;
+import com.twu.biblioteca.service.Impl.SpyPrinter;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
