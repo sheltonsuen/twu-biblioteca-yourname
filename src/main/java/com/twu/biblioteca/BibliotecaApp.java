@@ -4,9 +4,11 @@ import com.twu.biblioteca.domain.Describable;
 import com.twu.biblioteca.service.BorrowAbleService;
 import com.twu.biblioteca.service.InputService;
 import com.twu.biblioteca.service.Printer;
+import com.twu.biblioteca.service.UIService;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import com.twu.biblioteca.service.impl.CLIPrinter;
 import com.twu.biblioteca.service.impl.InputServiceImpl;
+import com.twu.biblioteca.service.impl.UIServiceCLIImpl;
 import com.twu.biblioteca.utils.Injector;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,12 +26,14 @@ public class BibliotecaApp {
     private Printer printer;
     private InputService inputService;
     private BorrowAbleService borrowAbleService;
+    private UIService uiService;
 
     public static void main(String[] args) {
         Injector injector = Injector.getInstance();
         injector.setPrinter(new CLIPrinter());
         injector.setInputService(new InputServiceImpl());
         injector.setBorrowAbleService(new BookServiceMockImpl());
+        injector.setUiService(new UIServiceCLIImpl());
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
@@ -39,8 +43,7 @@ public class BibliotecaApp {
     }
 
     void run() {
-
-        printer.print(Collections.singletonList(WELCOME_MESSAGE));
+        uiService.showWelcomeMessage();
 
         loopMenuUntilQuit();
     }

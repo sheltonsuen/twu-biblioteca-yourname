@@ -3,11 +3,13 @@ package com.twu.biblioteca.service.impl;
 import com.twu.biblioteca.consts.ApplicationContant;
 import com.twu.biblioteca.service.Printer;
 import com.twu.biblioteca.service.UIService;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collections;
 
 @Setter
+@Getter
 public class UIServiceCLIImpl implements UIService {
 
     private Printer printer;

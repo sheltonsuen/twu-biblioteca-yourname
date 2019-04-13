@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.service.impl.MockInputService;
 import com.twu.biblioteca.service.impl.SpyPrinter;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
+import com.twu.biblioteca.service.impl.UIServiceCLIImpl;
 import com.twu.biblioteca.utils.Injector;
 import org.junit.Before;
 import org.junit.Test;
@@ -210,11 +211,12 @@ public class BibliotecaAppTest {
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
         MockInputService mockInputService = new MockInputService(optionsQueue, bookNamesQueue);
         Injector.getInstance().setInputService(mockInputService);
-
         Injector.getInstance().setBorrowAbleService(new BookServiceMockImpl());
 
         spyPrinter = new SpyPrinter();
         Injector.getInstance().setPrinter(spyPrinter);
+
+        Injector.getInstance().setUiService(new UIServiceCLIImpl());
 
         Injector.getInstance().injectDependencies(bibliotecaApp);
     }

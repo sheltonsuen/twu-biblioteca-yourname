@@ -4,6 +4,8 @@ import com.twu.biblioteca.BibliotecaApp;
 import com.twu.biblioteca.service.BorrowAbleService;
 import com.twu.biblioteca.service.InputService;
 import com.twu.biblioteca.service.Printer;
+import com.twu.biblioteca.service.UIService;
+import com.twu.biblioteca.service.impl.UIServiceCLIImpl;
 import lombok.Setter;
 
 @Setter
@@ -14,6 +16,7 @@ public class Injector {
     private Printer printer;
     private InputService inputService;
     private BorrowAbleService borrowAbleService;
+    private UIServiceCLIImpl uiService;
 
     private Injector() {
     }
@@ -30,5 +33,7 @@ public class Injector {
         bibliotecaApp.setPrinter(this.printer);
         bibliotecaApp.setInputService(this.inputService);
         bibliotecaApp.setBorrowAbleService(this.borrowAbleService);
+        bibliotecaApp.setUiService(this.uiService);
+        this.uiService.setPrinter(this.printer);
     }
 }

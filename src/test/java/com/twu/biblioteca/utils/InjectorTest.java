@@ -1,9 +1,7 @@
 package com.twu.biblioteca.utils;
 
 import com.twu.biblioteca.BibliotecaApp;
-import com.twu.biblioteca.service.impl.SpyPrinter;
-import com.twu.biblioteca.service.impl.BookServiceMockImpl;
-import com.twu.biblioteca.service.impl.InputServiceImpl;
+import com.twu.biblioteca.service.impl.*;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -53,5 +51,21 @@ public class InjectorTest {
         injector.injectDependencies(bibliotecaApp);
 
         assertNotNull(bibliotecaApp.getBorrowAbleService());
+    }
+
+    @Test
+    public void should_inject_printer_dependency_to_UI_service() {
+        Injector injector = Injector.getInstance();
+        injector.setPrinter(new SpyPrinter());
+        injector.setInputService(new InputServiceImpl());
+        injector.setBorrowAbleService(new BookServiceMockImpl());
+        UIServiceCLIImpl uiServiceCLI = new UIServiceCLIImpl();
+        injector.setUiService(uiServiceCLI);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+
+        injector.injectDependencies(bibliotecaApp);
+
+        assertNotNull(bibliotecaApp.getUiService());
+        assertNotNull(uiServiceCLI.getPrinter());
     }
 }
