@@ -75,19 +75,19 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_quit_option_after_book_list() {
-        mockOptionalNumber = 1;
+        mockOptionalNumber = 3;
 
         bibliotecaApp.run();
 
         assertEquals(
                 "quit option followed after book list",
-                "2. Quit",
-                spyPrinter.getPrintCalls().get(1).get(1));
+                "3. Quit",
+                spyPrinter.getPrintCalls().get(1).get(2));
     }
 
     @Test
     public void should_quit_after_chose_quit_option() {
-        Injector.getInstance().setInputService(() -> 2);
+        Injector.getInstance().setInputService(() -> 3);
         Injector.getInstance().injectDependencies(bibliotecaApp);
 
         bibliotecaApp.run();
@@ -108,5 +108,16 @@ public class BibliotecaAppTest {
         assertEquals("book list count", 4, spyPrinter.getPrintCalls().get(4).size());
 
         mockOptionalNumber = 0;
+    }
+
+    @Test
+    public void should_see_checkout_optional() {
+        mockOptionalNumber = 2;
+        bibliotecaApp.run();
+
+        assertEquals(
+                "quit option followed after book list",
+                "2. Checkout Book",
+                spyPrinter.getPrintCalls().get(1).get(1));
     }
 }
