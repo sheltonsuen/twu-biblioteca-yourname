@@ -17,6 +17,7 @@ public class BibliotecaApp {
     private static final String LIST_OF_BOOKS = "List of books";
     private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!";
     private static final String BOOK_INFO_SLICER = "    ";
+    private static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
 
     private Printer printer;
     private InputService inputService;
@@ -49,7 +50,10 @@ public class BibliotecaApp {
     private void startMenu(Integer optionNumber) {
         if (optionNumber == 1) {
             printBookList();
+            return;
         }
+
+        printer.print(Collections.singletonList(INVALID_OPTION_NOTIFICATION));
     }
 
     private void printBookList() {

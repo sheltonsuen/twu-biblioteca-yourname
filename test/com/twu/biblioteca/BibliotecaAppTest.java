@@ -46,12 +46,22 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_list_of_book_information_when_input_menu_option_1() {
-
-
         bibliotecaApp.run();
 
         int actualResult = spyPrinter.getPrintCalls().get(2).size();
 
         assertEquals("Books count", 4, actualResult);
+    }
+
+    @Test
+    public void should_see_a_notification_when_chose_an_invalid_option() {
+        Injector.getInstance().setInputService(() -> 3);
+        Injector.getInstance().injectDependencies(bibliotecaApp);
+
+        bibliotecaApp.run();
+
+        String actualResult = spyPrinter.getPrintCalls().get(2).get(0);
+
+        assertEquals("Invalid menu options message", "Please select a valid option!", actualResult);
     }
 }
