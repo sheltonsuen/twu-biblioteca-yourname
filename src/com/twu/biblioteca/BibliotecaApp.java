@@ -17,7 +17,8 @@ public class BibliotecaApp {
 
     private static final String LIST_OF_BOOKS = "1. List of books";
     private static final String CHECKOUT_BOOK = "2. Checkout Book";
-    private static final String QUIT = "3. Quit";
+    private static final String RETURN_BOOK = "3. Return Book";
+    private static final String QUIT = "4. Quit";
     private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!";
     private static final String BOOK_INFO_SLICER = "    ";
     private static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
@@ -50,11 +51,11 @@ public class BibliotecaApp {
 
     private void loopMenuUntilQuit() {
         while (true) {
-            printer.print(Arrays.asList(LIST_OF_BOOKS, CHECKOUT_BOOK, QUIT));
+            printer.print(Arrays.asList(LIST_OF_BOOKS, CHECKOUT_BOOK, RETURN_BOOK, QUIT));
 
             Integer optionNumber = inputService.inputMenuOptionNumber();
 
-            if (optionNumber == 3) {
+            if (optionNumber == 4) {
                 break;
             }
 

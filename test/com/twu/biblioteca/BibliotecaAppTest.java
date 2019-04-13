@@ -22,7 +22,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_welcome_message_when_start_the_application() {
-        withInput(Collections.singletonList(3), Collections.emptyList());
+        withInput(Collections.singletonList(4), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -36,7 +36,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_book_list_option_after_welcome_message() {
-        withInput(Collections.singletonList(3), Collections.emptyList());
+        withInput(Collections.singletonList(4), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -48,7 +48,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_list_of_book_information_when_input_menu_option_1() {
-        withInput(Arrays.asList(1, 3), Collections.emptyList());
+        withInput(Arrays.asList(1, 4), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -58,7 +58,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_notification_when_chose_an_invalid_option() {
-        withInput(Arrays.asList(0, 3), Collections.emptyList());
+        withInput(Arrays.asList(0, 4), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -69,26 +69,26 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_quit_option_after_book_list() {
-        withInput(Collections.singletonList(3), Collections.emptyList());
+        withInput(Collections.singletonList(4), Collections.emptyList());
 
         bibliotecaApp.run();
 
         assertEquals(
                 "quit option followed after book list",
-                "3. Quit",
-                spyPrinter.getPrintCalls().get(1).get(2));
+                "4. Quit",
+                spyPrinter.getPrintCalls().get(1).get(3));
     }
 
     @Test
     public void should_quit_after_chose_quit_option() {
-        withInput(Collections.singletonList(3), Collections.emptyList());
+        withInput(Collections.singletonList(4), Collections.emptyList());
 
         bibliotecaApp.run();
     }
 
     @Test
     public void should_can_select_again_when_not_quit() {
-        withInput(Arrays.asList(0, 1, 3), Collections.emptyList());
+        withInput(Arrays.asList(0, 1, 4), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -101,7 +101,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_checkout_optional() {
-        withInput(Collections.singletonList(3), Collections.emptyList());
+        withInput(Collections.singletonList(4), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -113,7 +113,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_checkout_the_book_if_chose_check_book_option() {
-        withInput(Arrays.asList(2, 1, 3), Collections.singletonList("Journey to the West Wu"));
+        withInput(Arrays.asList(2, 1, 4), Collections.singletonList("Journey to the West Wu"));
 
         bibliotecaApp.run();
 
@@ -125,7 +125,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_show_success_message_when_checkout_book_successfully() {
-        withInput(Arrays.asList(2, 1, 3), Collections.singletonList("Journey to the West Wu"));
+        withInput(Arrays.asList(2, 1, 4), Collections.singletonList("Journey to the West Wu"));
 
         bibliotecaApp.run();
 
@@ -142,7 +142,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_show_un_success_message_when_checkout_book_unsuccessfully() {
-        withInput(Arrays.asList(2, 1, 3), Collections.singletonList("No that book"));
+        withInput(Arrays.asList(2, 1, 4), Collections.singletonList("No that book"));
 
         bibliotecaApp.run();
 
@@ -155,6 +155,18 @@ public class BibliotecaAppTest {
                 "books list count",
                 4,
                 spyPrinter.getPrintCalls().get(4).size());
+    }
+
+    @Test
+    public void should_show_return_book_message_right_beow_check_out_option() {
+        withInput(Collections.singletonList(4), Collections.emptyList());
+
+        bibliotecaApp.run();
+
+        assertEquals(
+                "return option",
+                "3. Return Book",
+                spyPrinter.getPrintCalls().get(1).get(2));
     }
 
     void withInput(List<Integer> options, List<String> bookNames) {
