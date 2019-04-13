@@ -13,20 +13,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.twu.biblioteca.consts.ApplicationContant.*;
+
 public class BibliotecaApp {
-
-    private static final String LIST_OF_BOOKS = "1. List of books";
-    private static final String CHECKOUT_BOOK = "2. Checkout Book";
-    private static final String RETURN_BOOK = "3. Return Book";
-    private static final String QUIT = "4. Quit";
-    private static final String WELCOME_MESSAGE = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Biblioteca!";
-    private static final String BOOK_INFO_SLICER = "    ";
-    private static final String INVALID_OPTION_NOTIFICATION = "Please select a valid option!";
-    private static final String SUCCESSFULLY_CHECKOUT_BOOK = "Thank you! Enjoy the book";
-    private static final String UNSUCCESSFULLY_CHECKOUT_BOOK = "Sorry, that book is not available";
-    private static final String SUCCESSFULLY_RETURN_BOOK = "Thank you for returning the book";
-    private static final String UNSUCCESSFULLY_RETURN_BOOK = "This is not a valid book to return";
-
     private Printer printer;
     private InputService inputService;
     private BookService bookService;
