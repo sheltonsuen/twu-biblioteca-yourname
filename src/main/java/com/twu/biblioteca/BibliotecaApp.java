@@ -12,10 +12,6 @@ import com.twu.biblioteca.utils.Injector;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collections;
-
-import static com.twu.biblioteca.consts.ApplicationContant.*;
-
 @Setter
 @Getter
 public class BibliotecaApp {
@@ -67,7 +63,7 @@ public class BibliotecaApp {
                 uiService.showCheckoutBookHint(borrowAbleService.checkout(inputService.inputBookName()));
                 break;
             case 3:
-                uiService.showReturnBookHint(borrowAbleService.returnBook(inputService.inputBookName()));
+                uiService.showReturnBookHint(borrowAbleService.returnBack(inputService.inputBookName()));
                 break;
             default:
                 uiService.showInvalidOptionsMessage();

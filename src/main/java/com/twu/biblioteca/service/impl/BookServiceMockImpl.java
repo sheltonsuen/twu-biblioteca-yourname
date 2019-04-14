@@ -34,7 +34,7 @@ public class BookServiceMockImpl implements BorrowAbleService {
     }
 
     @Override
-    public boolean returnBook(String name) {
+    public boolean returnBack(String name) {
         for (Book book : BOOK_LIST) {
             if (book.getName().equals(name)) {
                 book.setAvailable(true);

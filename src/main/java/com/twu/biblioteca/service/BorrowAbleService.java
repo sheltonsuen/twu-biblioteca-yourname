@@ -10,5 +10,5 @@ public interface BorrowAbleService {
 
     boolean checkout(String name);
 
-    boolean returnBook(String name);
+    boolean returnBack(String name);
 }

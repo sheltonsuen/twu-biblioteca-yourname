@@ -48,7 +48,7 @@ public class BookServiceMockImplTest {
         boolean checkoutResult = borrowAbleService.checkout("Journey to the West Wu");
         assertTrue(checkoutResult);
 
-        boolean returnResult = borrowAbleService.returnBook("Journey to the West Wu");
+        boolean returnResult = borrowAbleService.returnBack("Journey to the West Wu");
 
         List<Describable> bookList = borrowAbleService.listAll();
         assertEquals("book list count", 4, bookList.size());
@@ -63,7 +63,7 @@ public class BookServiceMockImplTest {
         boolean checkoutResult = borrowAbleService.checkout("Journey to the West Wu");
         assertTrue(checkoutResult);
 
-        boolean returnResult = borrowAbleService.returnBook("wrong book name");
+        boolean returnResult = borrowAbleService.returnBack("wrong book name");
 
         List<Describable> bookList = borrowAbleService.listAll();
         assertEquals("book list count", 3, bookList.size());
