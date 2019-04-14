@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class BookServiceMockImpl implements BorrowAbleService {
 
-    private List<Book> BOOK_LIST = Arrays.asList(
+    private List<Book> bookList = Arrays.asList(
             new Book("Romance of the Three Kingdoms", "Luo Guanzhong", 1400),
             new Book("Journey to the West Wu", "Cheng'en", 1503),
             new Book("A Dream in Red Mansions", "Cao Xueqin", 1763),
@@ -18,12 +18,12 @@ public class BookServiceMockImpl implements BorrowAbleService {
 
     @Override
     public List<Describable> listAll() {
-        return BOOK_LIST.stream().filter(Book::getAvailable).collect(Collectors.toList());
+        return bookList.stream().filter(Book::getAvailable).collect(Collectors.toList());
     }
 
     @Override
     public boolean checkout(String name) {
-        for (Book book : BOOK_LIST) {
+        for (Book book : bookList) {
             if (book.getName().equals(name)) {
                 book.setAvailable(false);
                 return true;
@@ -35,7 +35,7 @@ public class BookServiceMockImpl implements BorrowAbleService {
 
     @Override
     public boolean returnBack(String name) {
-        for (Book book : BOOK_LIST) {
+        for (Book book : bookList) {
             if (book.getName().equals(name)) {
                 book.setAvailable(true);
                 return true;
