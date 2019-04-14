@@ -15,9 +15,8 @@ public class ApplicationConstant {
     public static final String MOVIE_LIST_LACE = "***************************************************************************";
     public static final String MOVIE_LIST_HEADER = "*    Movie Name                      |   Year |  Director        | Rating *";
 
-    public static final String ACCOUNT_INFORMATION_LACE = "***********************************************************";
-    public static final String ACCOUNT_INFORMATION_HEADER = "*    Name         |  email              |  phone number   *";
-
+    public static final String ACCOUNT_INFORMATION_LACE =   "**************************************************************************";
+    public static final String ACCOUNT_INFORMATION_HEADER = "*    Name         |      email                  |    phone number        *";
 
     public static final List<String> WELCOME_MESSAGE = Arrays.asList(
             "****************************************************************",

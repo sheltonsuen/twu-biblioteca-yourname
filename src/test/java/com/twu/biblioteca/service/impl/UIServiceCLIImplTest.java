@@ -181,7 +181,7 @@ public class UIServiceCLIImplTest {
 
 
         assertEquals("account information header",
-                "*    Name         |  email              |  phone number   *",
+                "*    Name         |      email                  |    phone number        *",
                 spyPrinter.getPrintCalls().get(0).get(1));
         assertEquals("account information",
                 "*    Test                test@tw.com                 15982026694         *",
