@@ -87,8 +87,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "quit option followed after book list",
-                "*    5. Quit             *",
-                spyPrinterService.getPrintCalls().get(1).get(5));
+                "*    6. Quit             *",
+                spyPrinterService.getPrintCalls().get(1).get(6));
     }
 
     @Test
