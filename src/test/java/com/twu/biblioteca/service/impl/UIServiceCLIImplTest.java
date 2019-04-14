@@ -1,5 +1,6 @@
 package com.twu.biblioteca.service.impl;
 
+import com.twu.biblioteca.domain.Account;
 import com.twu.biblioteca.domain.Book;
 import com.twu.biblioteca.domain.Describable;
 import com.twu.biblioteca.domain.Movie;
@@ -45,7 +46,7 @@ public class UIServiceCLIImplTest {
         assertEquals("list book option", "*    1. List of books    *", spyPrinter.getPrintCalls().get(0).get(1));
         assertEquals("checkout book", "*    2. Checkout Book    *", spyPrinter.getPrintCalls().get(0).get(2));
         assertEquals("return book", "*    3. Return Book      *", spyPrinter.getPrintCalls().get(0).get(3));
-        assertEquals("list movies",    "*    4. List Movies      *", spyPrinter.getPrintCalls().get(0).get(4));
+        assertEquals("list movies", "*    4. List Movies      *", spyPrinter.getPrintCalls().get(0).get(4));
         assertEquals("checkout movie", "*    5. Checkout Movie   *", spyPrinter.getPrintCalls().get(0).get(5));
         assertEquals("quit", "*    6. Quit             *", spyPrinter.getPrintCalls().get(0).get(6));
     }
@@ -160,9 +161,32 @@ public class UIServiceCLIImplTest {
                 spyPrinter.getPrintCalls().get(0).get(1));
     }
 
+    @Test
+    public void should_print_account_info_option_in_menu_when_logged_in() {
+        withServices(true);
+
+        uiServiceCLI.showMenuOptions();
+
+        assertEquals("menu options",
+                9,
+                spyPrinter.getPrintCalls().get(0).size());
+        assertEquals("account info", "*    7. Account Info     *", spyPrinter.getPrintCalls().get(0).get(7));
+    }
+
+
     private void withServices() {
+        withServices(false);
+    }
+
+    private void withServices(Boolean preLogin) {
         uiServiceCLI = new UIServiceCLIImpl();
         spyPrinter = new SpyPrinterService();
         uiServiceCLI.setPrinterService(spyPrinter);
+
+        SecurityServiceImpl securityService = new SecurityServiceImpl();
+        if (preLogin) {
+            securityService.setLoggedInAccount(new Account("Test", "test@tw.com", "15982026694", "123-6666", "123"));
+        }
+        uiServiceCLI.setSecurityService(securityService);
     }
 }

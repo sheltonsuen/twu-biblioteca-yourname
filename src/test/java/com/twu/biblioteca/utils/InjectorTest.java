@@ -9,6 +9,9 @@ import static junit.framework.TestCase.assertNotNull;
 
 public class InjectorTest {
 
+    private UIServiceCLIImpl uiServiceCLI;
+    private SecurityServiceImpl securityService;
+
     @Test
     public void should_return_the_same_instance_of_Injector_when_get_it_multiple_times() {
         Injector firstInjector = Injector.getInstance();
@@ -19,51 +22,40 @@ public class InjectorTest {
 
     @Test
     public void should_inject_CLI_printer_to_biblioteca_app() {
-        Injector injector = Injector.getInstance();
-        injector.setPrinterService(new SpyPrinterService());
+        withInjectableService();
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
-        injector.injectDependencies(bibliotecaApp);
+        Injector.getInstance().injectDependencies(bibliotecaApp);
 
         assertNotNull(bibliotecaApp.getPrinterService());
     }
 
     @Test
     public void should_inject_input_service_to_biblioteca_app() {
-        Injector injector = Injector.getInstance();
-        injector.setPrinterService(new SpyPrinterService());
-        injector.setInputService(new InputServiceImpl());
+        withInjectableService();
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
-        injector.injectDependencies(bibliotecaApp);
+        Injector.getInstance().injectDependencies(bibliotecaApp);
 
         assertNotNull(bibliotecaApp.getInputService());
     }
 
     @Test
     public void should_inject_book_service_to_biblioteca_app() {
-        Injector injector = Injector.getInstance();
-        injector.setPrinterService(new SpyPrinterService());
-        injector.setInputService(new InputServiceImpl());
-        injector.setBookBorrowService(new BookServiceMockImpl());
+        withInjectableService();
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
-        injector.injectDependencies(bibliotecaApp);
+        Injector.getInstance().injectDependencies(bibliotecaApp);
 
         assertNotNull(bibliotecaApp.getBookBorrowService());
     }
 
     @Test
     public void should_inject_printer_service_to_UI_service() {
-        Injector injector = Injector.getInstance();
-        injector.setPrinterService(new SpyPrinterService());
-        injector.setInputService(new InputServiceImpl());
-        injector.setBookBorrowService(new BookServiceMockImpl());
-        UIServiceCLIImpl uiServiceCLI = new UIServiceCLIImpl();
-        injector.setUiService(uiServiceCLI);
+        withInjectableService();
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
-        injector.injectDependencies(bibliotecaApp);
+        Injector.getInstance().injectDependencies(bibliotecaApp);
 
         assertNotNull(bibliotecaApp.getUiService());
         assertNotNull(uiServiceCLI.getPrinterService());
@@ -71,8 +63,7 @@ public class InjectorTest {
 
     @Test
     public void should_inject_movie_borrow_service_to_bibliotec_app() {
-        Injector.getInstance().setMovieBorrowService(new MovieServiceMockImpl());
-        Injector.getInstance().setUiService(new UIServiceCLIImpl());
+        withInjectableService();
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         Injector.getInstance().injectDependencies(bibliotecaApp);
@@ -82,11 +73,7 @@ public class InjectorTest {
 
     @Test
     public void should_inject_security_service_to_bibliotec_app() {
-        Injector.getInstance().setInputService(new InputServiceImpl());
-        Injector.getInstance().setPrinterService(new PrinterServiceCLIImpl());
-        Injector.getInstance().setUiService(new UIServiceCLIImpl());
-        SecurityServiceImpl securityService = new SecurityServiceImpl();
-        Injector.getInstance().setSecurityService(securityService);
+        withInjectableService();
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
@@ -95,5 +82,29 @@ public class InjectorTest {
         assertNotNull(bibliotecaApp.getSecurityService());
         assertNotNull(securityService.getInputService());
         assertNotNull(securityService.getPrinterService());
+    }
+
+    @Test
+    public void should_inject_security_service_to_UI_service() {
+        withInjectableService();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+
+        Injector.getInstance().injectDependencies(bibliotecaApp);
+
+        assertNotNull(uiServiceCLI.getSecurityService());
+    }
+
+    private void withInjectableService() {
+        Injector injector = Injector.getInstance();
+        injector.setPrinterService(new SpyPrinterService());
+        injector.setInputService(new InputServiceImpl());
+        injector.setBookBorrowService(new BookServiceMockImpl());
+        injector.setMovieBorrowService(new MovieServiceMockImpl());
+
+        uiServiceCLI = new UIServiceCLIImpl();
+        securityService = new SecurityServiceImpl();
+
+        injector.setSecurityService(securityService);
+        injector.setUiService(uiServiceCLI);
     }
 }

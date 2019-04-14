@@ -40,6 +40,7 @@ public class Injector {
         bibliotecaApp.setMovieBorrowService(this.movieBorrowService);
 
         this.uiService.setPrinterService(this.printerService);
+        this.uiService.setSecurityService(this.securityService);
 
         this.securityService.setInputService(this.inputService);
         this.securityService.setPrinterService(this.printerService);

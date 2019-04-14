@@ -3,6 +3,7 @@ package com.twu.biblioteca.service.impl;
 import com.twu.biblioteca.consts.ApplicationConstant;
 import com.twu.biblioteca.domain.Describable;
 import com.twu.biblioteca.service.PrinterService;
+import com.twu.biblioteca.service.SecurityService;
 import com.twu.biblioteca.service.UIService;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 public class UIServiceCLIImpl implements UIService {
 
     private PrinterService printerService;
+    private SecurityService securityService;
 
     @Override
     public void showWelcomeMessage() {
@@ -25,6 +27,11 @@ public class UIServiceCLIImpl implements UIService {
 
     @Override
     public void showMenuOptions() {
+        if (securityService.retrieveLoggedInAccount() != null) {
+            printerService.print(ApplicationConstant.MENU_OPTIONS_WITH_ACCOUNT_INFO);
+            return;
+        }
+
         printerService.print(ApplicationConstant.MENU_OPTIONS);
     }
 

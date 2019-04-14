@@ -32,6 +32,17 @@ public class ApplicationConstant {
             "*    6. Quit             *",
             "**************************");
 
+    public static final List<String> MENU_OPTIONS_WITH_ACCOUNT_INFO = Arrays.asList(
+            "**************************",
+            "*    1. List of books    *",
+            "*    2. Checkout Book    *",
+            "*    3. Return Book      *",
+            "*    4. List Movies      *",
+            "*    5. Checkout Movie   *",
+            "*    6. Quit             *",
+            "*    7. Account Info     *",
+            "**************************");
+
     public static final List<String> INVALID_OPTION_MESSAGE = Arrays.asList(
             "**************************************************",
             "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
