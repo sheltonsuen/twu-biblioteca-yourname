@@ -52,6 +52,7 @@ public class SecurityServiceImpl implements SecurityService {
         }
 
         printerService.print(LOGIN_SUCCESSFULLY);
+        this.loggedInAccount = account;
         return true;
     }
 }

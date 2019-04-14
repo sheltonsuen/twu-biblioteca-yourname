@@ -50,6 +50,15 @@ public class SecurityServiceImplTest {
     }
 
     @Test
+    public void should_record_logged_in_when_login_account_successfully() {
+        withNewSecurityService(Collections.emptyList(), Arrays.asList("123-6666", "123"));
+
+        securityService.guardLogin();
+
+        assertNotNull(securityService.getLoggedInAccount());
+    }
+
+    @Test
     public void should_see_failed_login_hint_when_login_failed() {
         withNewSecurityService(Collections.emptyList(), Arrays.asList("123-6666", "111"));
 
@@ -57,7 +66,6 @@ public class SecurityServiceImplTest {
 
         assertFalse(loginResult);
     }
-
 
     private void withNewSecurityService(List<Integer> inputNumber, List<String> inputStr) {
         Queue<Integer> numbers = new ArrayDeque<>(inputNumber);
