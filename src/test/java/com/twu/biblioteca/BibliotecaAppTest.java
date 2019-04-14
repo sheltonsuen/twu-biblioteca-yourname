@@ -17,10 +17,6 @@ public class BibliotecaAppTest {
     private BibliotecaApp bibliotecaApp = new BibliotecaApp();
     private SpyPrinterService spyPrinterService;
 
-    @Before
-    public void setup() {
-    }
-
     @Test
     public void should_see_welcome_message_when_start_the_application() {
         withInput(Collections.singletonList(4), Collections.emptyList());
