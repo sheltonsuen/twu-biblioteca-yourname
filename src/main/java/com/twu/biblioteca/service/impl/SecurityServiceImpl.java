@@ -6,6 +6,7 @@ import com.twu.biblioteca.domain.Account;
 import com.twu.biblioteca.service.InputService;
 import com.twu.biblioteca.service.PrinterService;
 import com.twu.biblioteca.service.SecurityService;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collections;
@@ -14,6 +15,7 @@ import java.util.Map;
 import static com.twu.biblioteca.consts.ApplicationConstant.*;
 
 @Setter
+@Getter
 public class SecurityServiceImpl implements SecurityService {
 
     private PrinterService printerService;

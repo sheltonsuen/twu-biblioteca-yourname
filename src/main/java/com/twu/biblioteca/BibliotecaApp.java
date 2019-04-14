@@ -1,13 +1,12 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.service.BorrowAbleService;
-import com.twu.biblioteca.service.InputService;
-import com.twu.biblioteca.service.PrinterService;
-import com.twu.biblioteca.service.UIService;
+import com.twu.biblioteca.service.*;
 import com.twu.biblioteca.service.impl.*;
 import com.twu.biblioteca.utils.Injector;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Arrays;
 
 @Setter
 @Getter
@@ -17,6 +16,7 @@ public class BibliotecaApp {
     private UIService uiService;
     private BorrowAbleService bookBorrowService;
     private BorrowAbleService movieBorrowService;
+    private SecurityService securityService;
 
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -33,6 +33,7 @@ public class BibliotecaApp {
         injector.setUiService(new UIServiceCLIImpl());
         injector.setBookBorrowService(new BookServiceMockImpl());
         injector.setMovieBorrowService(new MovieServiceMockImpl());
+        injector.setSecurityService(new SecurityServiceImpl());
 
         injector.injectDependencies(bibliotecaApp);
     }
@@ -51,6 +52,10 @@ public class BibliotecaApp {
 
             if (optionNumber == 6) {
                 break;
+            }
+
+            if (Arrays.asList(2, 3, 5).contains(optionNumber) && !securityService.guardLogin()) {
+                continue;
             }
 
             startOption(optionNumber);
