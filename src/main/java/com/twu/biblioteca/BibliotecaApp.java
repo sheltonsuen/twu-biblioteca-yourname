@@ -79,6 +79,9 @@ public class BibliotecaApp {
             case 5:
                 uiService.showCheckoutMovieHint(movieBorrowService.checkout(inputService.inputNextLineAsString()));
                 break;
+            case 7:
+                uiService.showLoggedInAccountInformation();
+                break;
             default:
                 uiService.showInvalidOptionsMessage();
                 break;

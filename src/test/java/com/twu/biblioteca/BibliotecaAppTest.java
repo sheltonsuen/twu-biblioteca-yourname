@@ -284,7 +284,20 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        assertEquals("return book", "*    （｡ò ∀ ó｡）    Thank you for returning the book    *", spyPrinterService.getPrintCalls().get(6).get(1));
+        assertEquals("return book",
+                "*    （｡ò ∀ ó｡）    Thank you for returning the book    *",
+                spyPrinterService.getPrintCalls().get(6).get(1));
+    }
+
+    @Test
+    public void should_display_account_information_when_chose_account_information_option() {
+        withSetup(Arrays.asList(7, 6), Collections.emptyList(), true);
+
+        bibliotecaApp.run();
+
+        assertEquals("account information",
+                "*    Test                test@tw.com                 15982026694         *",
+                spyPrinterService.getPrintCalls().get(2).get(2));
     }
 
     private void withSetup(List<Integer> inputOptions, List<String> inputStrings, Boolean preLogin) {
