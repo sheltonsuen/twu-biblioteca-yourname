@@ -38,6 +38,10 @@ public class SecurityServiceImpl implements SecurityService {
         printerService.print(Collections.singletonList(PASSWORD));
         String password = inputService.inputNextLineAsString();
 
+        return processLogin(libraryNumber, password);
+    }
+
+    private Boolean processLogin(String libraryNumber, String password) {
         Account account = accountMap.get(libraryNumber);
 
         if (account == null || !account.getPassword().equals(password)) {
