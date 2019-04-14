@@ -67,6 +67,35 @@ public class SecurityServiceImplTest {
         assertFalse(loginResult);
     }
 
+    @Test
+    public void should_return_logged_in_account_when_logged_in() {
+        withNewSecurityService(Collections.emptyList(), Collections.emptyList());
+        securityService.setLoggedInAccount(new Account("Test", "test@tw.com", "15982026694", "123-6666", "123"));
+
+        Account account = securityService.retrieveLoggedInAccount();
+
+        assertNotNull(account);
+    }
+
+    @Test
+    public void should_return_null_when_user_is_not_logged_in() {
+        withNewSecurityService(Collections.emptyList(), Collections.emptyList());
+
+        Account account = securityService.retrieveLoggedInAccount();
+
+        assertNull(account);
+    }
+
+    @Test
+    public void should_omit_password_of_logged_in_account_when_retrieve_it() {
+        withNewSecurityService(Collections.emptyList(), Collections.emptyList());
+        securityService.setLoggedInAccount(new Account("Test", "test@tw.com", "15982026694", "123-6666", "123"));
+
+        Account account = securityService.retrieveLoggedInAccount();
+
+        assertNull(account.getPassword());
+    }
+
     private void withNewSecurityService(List<Integer> inputNumber, List<String> inputStr) {
         Queue<Integer> numbers = new ArrayDeque<>(inputNumber);
         Queue<String> strings = new ArrayDeque<>(inputStr);

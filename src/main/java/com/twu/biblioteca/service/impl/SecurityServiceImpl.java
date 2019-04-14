@@ -55,4 +55,19 @@ public class SecurityServiceImpl implements SecurityService {
         this.loggedInAccount = account;
         return true;
     }
+
+    @Override
+    public Account retrieveLoggedInAccount() {
+        if (this.loggedInAccount == null) {
+            return null;
+        }
+
+        return new Account(
+                this.loggedInAccount.getName(),
+                this.loggedInAccount.getEmail(),
+                this.loggedInAccount.getPhoneNumber(),
+                this.loggedInAccount.getLibraryNumber(),
+                null
+        );
+    }
 }
