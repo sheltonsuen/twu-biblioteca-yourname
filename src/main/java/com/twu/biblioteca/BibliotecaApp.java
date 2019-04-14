@@ -17,14 +17,14 @@ import lombok.Setter;
 public class BibliotecaApp {
     private PrinterService printerService;
     private InputService inputService;
-    private BorrowAbleService borrowAbleService;
+    private BorrowAbleService bookBorrowService;
     private UIService uiService;
 
     public static void main(String[] args) {
         Injector injector = Injector.getInstance();
         injector.setPrinterService(new PrinterServiceCLIImpl());
         injector.setInputService(new InputServiceImpl());
-        injector.setBorrowAbleService(new BookServiceMockImpl());
+        injector.setBookBorrowService(new BookServiceMockImpl());
         injector.setUiService(new UIServiceCLIImpl());
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -57,13 +57,13 @@ public class BibliotecaApp {
     private void startOption(Integer optionNumber) {
         switch (optionNumber) {
             case 1:
-                uiService.showBookList(borrowAbleService.listAll());
+                uiService.showBookList(bookBorrowService.listAll());
                 break;
             case 2:
-                uiService.showCheckoutBookHint(borrowAbleService.checkout(inputService.inputBookName()));
+                uiService.showCheckoutBookHint(bookBorrowService.checkout(inputService.inputBookName()));
                 break;
             case 3:
-                uiService.showReturnBookHint(borrowAbleService.returnBack(inputService.inputBookName()));
+                uiService.showReturnBookHint(bookBorrowService.returnBack(inputService.inputBookName()));
                 break;
             default:
                 uiService.showInvalidOptionsMessage();

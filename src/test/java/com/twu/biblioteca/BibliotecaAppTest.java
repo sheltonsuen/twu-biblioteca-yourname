@@ -216,7 +216,7 @@ public class BibliotecaAppTest {
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
         MockInputService mockInputService = new MockInputService(optionsQueue, bookNamesQueue);
         Injector.getInstance().setInputService(mockInputService);
-        Injector.getInstance().setBorrowAbleService(new BookServiceMockImpl());
+        Injector.getInstance().setBookBorrowService(new BookServiceMockImpl());
 
         spyPrinterService = new SpyPrinterService();
         Injector.getInstance().setPrinterService(spyPrinterService);

@@ -45,12 +45,12 @@ public class InjectorTest {
         Injector injector = Injector.getInstance();
         injector.setPrinterService(new SpyPrinterService());
         injector.setInputService(new InputServiceImpl());
-        injector.setBorrowAbleService(new BookServiceMockImpl());
+        injector.setBookBorrowService(new BookServiceMockImpl());
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         injector.injectDependencies(bibliotecaApp);
 
-        assertNotNull(bibliotecaApp.getBorrowAbleService());
+        assertNotNull(bibliotecaApp.getBookBorrowService());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class InjectorTest {
         Injector injector = Injector.getInstance();
         injector.setPrinterService(new SpyPrinterService());
         injector.setInputService(new InputServiceImpl());
-        injector.setBorrowAbleService(new BookServiceMockImpl());
+        injector.setBookBorrowService(new BookServiceMockImpl());
         UIServiceCLIImpl uiServiceCLI = new UIServiceCLIImpl();
         injector.setUiService(uiServiceCLI);
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
