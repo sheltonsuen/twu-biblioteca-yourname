@@ -6,6 +6,8 @@ import org.checkerframework.dataflow.qual.TerminatesExecution;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.*;
 
 import static junit.framework.TestCase.assertEquals;
@@ -14,6 +16,16 @@ public class BibliotecaAppTest {
 
     private BibliotecaApp bibliotecaApp = new BibliotecaApp();
     private SpyPrinterService spyPrinterService;
+
+    @Test
+    public void make_sure_every_thing_is_ok() {
+        InputStream originalInputStream = System.in;
+        System.setIn(new ByteArrayInputStream("5".getBytes()));
+
+        BibliotecaApp.main(null);
+
+        System.setIn(originalInputStream);
+    }
 
     @Test
     public void should_see_welcome_message_when_start_the_application() {

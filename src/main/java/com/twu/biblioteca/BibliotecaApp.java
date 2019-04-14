@@ -19,6 +19,14 @@ public class BibliotecaApp {
     private BorrowAbleService movieBorrowService;
 
     public static void main(String[] args) {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+
+        injectDependenciesTo(bibliotecaApp);
+
+        bibliotecaApp.run();
+    }
+
+    private static void injectDependenciesTo(BibliotecaApp bibliotecaApp) {
         Injector injector = Injector.getInstance();
         injector.setPrinterService(new PrinterServiceCLIImpl());
         injector.setInputService(new InputServiceImpl());
@@ -26,11 +34,7 @@ public class BibliotecaApp {
         injector.setBookBorrowService(new BookServiceMockImpl());
         injector.setMovieBorrowService(new MovieServiceMockImpl());
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-
         injector.injectDependencies(bibliotecaApp);
-
-        bibliotecaApp.run();
     }
 
     void run() {
