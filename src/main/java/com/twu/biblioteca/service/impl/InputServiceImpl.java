@@ -15,7 +15,7 @@ public class InputServiceImpl implements InputService {
     }
 
     @Override
-    public String inputName() {
+    public String inputNextLineAsString() {
         String nextLine = scanner.nextLine();
 
         if (BLANK_LINE.equals(nextLine)) {

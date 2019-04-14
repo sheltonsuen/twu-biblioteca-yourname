@@ -30,9 +30,18 @@ public class InputServiceImplTest {
     public void should_input_a_book_name() {
         System.setIn(new ByteArrayInputStream("Book Name".getBytes()));
 
-        String actualResult = new InputServiceImpl().inputName();
+        String actualResult = new InputServiceImpl().inputNextLineAsString();
 
         assertEquals("book name", "Book Name", actualResult);
+    }
+
+    @Test
+    public void should_input_to_next_line_when_current_line_has_nothing_but_line_break() {
+        System.setIn(new ByteArrayInputStream("\nNext Line".getBytes()));
+
+        String actualResult = new InputServiceImpl().inputNextLineAsString();
+
+        assertEquals("include line break", "Next Line", actualResult);
     }
 
     @After

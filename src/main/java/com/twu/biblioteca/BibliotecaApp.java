@@ -63,16 +63,16 @@ public class BibliotecaApp {
                 uiService.showBookList(bookBorrowService.listAll());
                 break;
             case 2:
-                uiService.showCheckoutBookHint(bookBorrowService.checkout(inputService.inputName()));
+                uiService.showCheckoutBookHint(bookBorrowService.checkout(inputService.inputNextLineAsString()));
                 break;
             case 3:
-                uiService.showReturnBookHint(bookBorrowService.returnBack(inputService.inputName()));
+                uiService.showReturnBookHint(bookBorrowService.returnBack(inputService.inputNextLineAsString()));
                 break;
             case 4:
                 uiService.showMovieList(movieBorrowService.listAll());
                 break;
             case 5:
-                uiService.showCheckoutMovieHint(movieBorrowService.checkout(inputService.inputName()));
+                uiService.showCheckoutMovieHint(movieBorrowService.checkout(inputService.inputNextLineAsString()));
                 break;
             default:
                 uiService.showInvalidOptionsMessage();
