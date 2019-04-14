@@ -49,7 +49,7 @@ public class BibliotecaApp {
 
             Integer optionNumber = inputService.inputMenuOptionNumber();
 
-            if (optionNumber == 5) {
+            if (optionNumber == 6) {
                 break;
             }
 
@@ -70,6 +70,9 @@ public class BibliotecaApp {
                 break;
             case 4:
                 uiService.showMovieList(movieBorrowService.listAll());
+                break;
+            case 5:
+                movieBorrowService.checkout(inputService.inputName());
                 break;
             default:
                 uiService.showInvalidOptionsMessage();
