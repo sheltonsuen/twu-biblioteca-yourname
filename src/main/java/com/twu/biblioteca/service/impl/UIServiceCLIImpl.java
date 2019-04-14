@@ -60,4 +60,11 @@ public class UIServiceCLIImpl implements UIService {
         printerService.print(movieList.stream().map(Describable::briefSelfIntroduce).collect(Collectors.toList()));
         printerService.print(Collections.singletonList(ApplicationConstant.MOVIE_LIST_LACE));
     }
+
+    @Override
+    public void showCheckoutMovieHint(Boolean result) {
+        printerService.print(result
+                ? ApplicationConstant.SUCCESSFULLY_CHECKOUT_MOVIE
+                : ApplicationConstant.UNSUCCESSFULLY_CHECKOUT_MOVIE);
+    }
 }

@@ -19,4 +19,6 @@ public interface UIService {
     void showReturnBookHint(Boolean result);
 
     void showMovieList(List<Describable> movieList);
+
+    void showCheckoutMovieHint(Boolean result);
 }

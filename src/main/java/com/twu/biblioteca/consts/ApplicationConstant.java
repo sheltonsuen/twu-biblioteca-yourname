@@ -53,9 +53,22 @@ public class ApplicationConstant {
             "*    （｡ò ∀ ó｡）    Thank you for returning the book    *",
             "********************************************************"
     );
+
     public static final List<String> UNSUCCESSFULLY_RETURN_BOOK = Arrays.asList(
             "********************************************************",
             "*    ( ‾̮‿͂‾̮ ꐦ)    This is not a valid book to return    *",
+            "********************************************************"
+    );
+
+    public static final List<String> SUCCESSFULLY_CHECKOUT_MOVIE = Arrays.asList(
+            "************************************************",
+            "*    （｡ò ∀ ó｡）  Thank you! Enjoy the movie    *",
+            "************************************************"
+    );
+
+    public static final List<String> UNSUCCESSFULLY_CHECKOUT_MOVIE = Arrays.asList(
+            "********************************************************",
+            "*    ( ‾̮‿͂‾̮ ꐦ)    Sorry, that movie is not available    *",
             "********************************************************"
     );
 }

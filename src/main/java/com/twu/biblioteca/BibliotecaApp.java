@@ -72,7 +72,7 @@ public class BibliotecaApp {
                 uiService.showMovieList(movieBorrowService.listAll());
                 break;
             case 5:
-                movieBorrowService.checkout(inputService.inputName());
+                uiService.showCheckoutMovieHint(movieBorrowService.checkout(inputService.inputName()));
                 break;
             default:
                 uiService.showInvalidOptionsMessage();

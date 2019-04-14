@@ -77,7 +77,7 @@ public class UIServiceCLIImplTest {
     }
 
     @Test
-    public void should_print_checkout_success_message_when_success() {
+    public void should_print_checkout_book_success_message_when_success() {
         withServices();
 
         uiServiceCLI.showCheckoutBookHint(true);
@@ -88,7 +88,7 @@ public class UIServiceCLIImplTest {
     }
 
     @Test
-    public void should_print_checkout_failed_message_when_fails() {
+    public void should_print_checkout_book_failed_message_when_fails() {
         withServices();
 
         uiServiceCLI.showCheckoutBookHint(false);
@@ -136,6 +136,28 @@ public class UIServiceCLIImplTest {
         assertEquals("book two",
                 "*    Forrest Gump                        1994    Robert Zemeckis     2    *",
                 spyPrinter.getPrintCalls().get(1).get(1));
+    }
+
+    @Test
+    public void should_print_checkout_movie_success_message_when_success() {
+        withServices();
+
+        uiServiceCLI.showCheckoutMovieHint(true);
+
+        assertEquals("checkout movie success",
+                "*    （｡ò ∀ ó｡）  Thank you! Enjoy the movie    *",
+                spyPrinter.getPrintCalls().get(0).get(1));
+    }
+
+    @Test
+    public void should_print_checkout_movie_failed_message_when_fails() {
+        withServices();
+
+        uiServiceCLI.showCheckoutMovieHint(false);
+
+        assertEquals("checkout movie fails",
+                "*    ( ‾̮‿͂‾̮ ꐦ)    Sorry, that movie is not available    *",
+                spyPrinter.getPrintCalls().get(0).get(1));
     }
 
     private void withServices() {
