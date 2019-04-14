@@ -54,7 +54,7 @@ public class InjectorTest {
     }
 
     @Test
-    public void should_inject_printer_dependency_to_UI_service() {
+    public void should_inject_printer_service_to_UI_service() {
         Injector injector = Injector.getInstance();
         injector.setPrinterService(new SpyPrinterService());
         injector.setInputService(new InputServiceImpl());
@@ -67,5 +67,16 @@ public class InjectorTest {
 
         assertNotNull(bibliotecaApp.getUiService());
         assertNotNull(uiServiceCLI.getPrinterService());
+    }
+
+    @Test
+    public void should_inject_movie_borrow_service_bibliotec_app() {
+        Injector.getInstance().setMovieBorrowService(new MovieServiceMockImpl());
+        Injector.getInstance().setUiService(new UIServiceCLIImpl());
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+
+        Injector.getInstance().injectDependencies(bibliotecaApp);
+
+        assertNotNull(bibliotecaApp.getMovieBorrowService());
     }
 }

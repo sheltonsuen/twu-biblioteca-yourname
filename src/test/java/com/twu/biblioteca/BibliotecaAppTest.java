@@ -1,10 +1,8 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.service.impl.MockInputService;
-import com.twu.biblioteca.service.impl.SpyPrinterService;
-import com.twu.biblioteca.service.impl.BookServiceMockImpl;
-import com.twu.biblioteca.service.impl.UIServiceCLIImpl;
+import com.twu.biblioteca.service.impl.*;
 import com.twu.biblioteca.utils.Injector;
+import org.checkerframework.dataflow.qual.TerminatesExecution;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +17,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_welcome_message_when_start_the_application() {
-        withInput(Collections.singletonList(4), Collections.emptyList());
+        withInput(Collections.singletonList(5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -38,7 +36,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_book_list_option_after_welcome_message() {
-        withInput(Collections.singletonList(4), Collections.emptyList());
+        withInput(Collections.singletonList(5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -50,7 +48,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_list_of_book_information_when_input_menu_option_1() {
-        withInput(Arrays.asList(1, 4), Collections.emptyList());
+        withInput(Arrays.asList(1, 5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -60,7 +58,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_a_notification_when_chose_an_invalid_option() {
-        withInput(Arrays.asList(0, 4), Collections.emptyList());
+        withInput(Arrays.asList(0, 5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -71,7 +69,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_quit_option_after_book_list() {
-        withInput(Collections.singletonList(4), Collections.emptyList());
+        withInput(Collections.singletonList(5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -83,14 +81,14 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_quit_after_chose_quit_option() {
-        withInput(Collections.singletonList(4), Collections.emptyList());
+        withInput(Collections.singletonList(5), Collections.emptyList());
 
         bibliotecaApp.run();
     }
 
     @Test
     public void should_can_select_again_when_not_quit() {
-        withInput(Arrays.asList(0, 1, 4), Collections.emptyList());
+        withInput(Arrays.asList(0, 1, 5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -103,7 +101,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_see_checkout_optional() {
-        withInput(Collections.singletonList(4), Collections.emptyList());
+        withInput(Collections.singletonList(5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -115,7 +113,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_checkout_the_book_if_chose_check_book_option() {
-        withInput(Arrays.asList(2, 1, 4), Collections.singletonList("Journey to the West Wu"));
+        withInput(Arrays.asList(2, 1, 5), Collections.singletonList("Journey to the West Wu"));
 
         bibliotecaApp.run();
 
@@ -127,7 +125,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_show_success_message_when_checkout_book_successfully() {
-        withInput(Arrays.asList(2, 1, 4), Collections.singletonList("Journey to the West Wu"));
+        withInput(Arrays.asList(2, 1, 5), Collections.singletonList("Journey to the West Wu"));
 
         bibliotecaApp.run();
 
@@ -144,7 +142,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_show_un_success_message_when_checkout_book_unsuccessfully() {
-        withInput(Arrays.asList(2, 1, 4), Collections.singletonList("No that book"));
+        withInput(Arrays.asList(2, 1, 5), Collections.singletonList("No that book"));
 
         bibliotecaApp.run();
 
@@ -161,7 +159,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_show_return_book_message_right_beow_check_out_option() {
-        withInput(Collections.singletonList(4), Collections.emptyList());
+        withInput(Collections.singletonList(5), Collections.emptyList());
 
         bibliotecaApp.run();
 
@@ -173,7 +171,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_the_returned_book_when_return_success() {
-        withInput(Arrays.asList(2, 3, 1, 4), Arrays.asList("Journey to the West Wu", "Journey to the West Wu"));
+        withInput(Arrays.asList(2, 3, 1, 5), Arrays.asList("Journey to the West Wu", "Journey to the West Wu"));
 
         bibliotecaApp.run();
 
@@ -185,7 +183,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_success_message_when_return_book_successfully() {
-        withInput(Arrays.asList(2, 3, 4), Arrays.asList("Journey to the West Wu", "Journey to the West Wu"));
+        withInput(Arrays.asList(2, 3, 5), Arrays.asList("Journey to the West Wu", "Journey to the West Wu"));
 
         bibliotecaApp.run();
 
@@ -197,7 +195,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void should_display_unsuccessful_message_when_return_book_unsuccessfully() {
-        withInput(Arrays.asList(2, 3, 4), Arrays.asList("Journey to the West Wu", "Wrong BookTest"));
+        withInput(Arrays.asList(2, 3, 5), Arrays.asList("Journey to the West Wu", "Wrong BookTest"));
 
         bibliotecaApp.run();
 
@@ -207,12 +205,26 @@ public class BibliotecaAppTest {
                 spyPrinterService.getPrintCalls().get(4).get(1));
     }
 
+    @Test
+    public void should_display_movie_list_when_select_movie_list_option() {
+        withInput(Arrays.asList(4, 5), Collections.emptyList());
+
+        bibliotecaApp.run();
+
+        assertEquals(
+                "movie list count",
+                3,
+                spyPrinterService.getPrintCalls().get(3).size());
+    }
+
+
     private void withInput(List<Integer> options, List<String> bookNames) {
         Queue<Integer> optionsQueue = new ArrayDeque<>(options);
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
         MockInputService mockInputService = new MockInputService(optionsQueue, bookNamesQueue);
         Injector.getInstance().setInputService(mockInputService);
         Injector.getInstance().setBookBorrowService(new BookServiceMockImpl());
+        Injector.getInstance().setMovieBorrowService(new MovieServiceMockImpl());
 
         spyPrinterService = new SpyPrinterService();
         Injector.getInstance().setPrinterService(spyPrinterService);

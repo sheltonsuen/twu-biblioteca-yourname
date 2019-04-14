@@ -14,8 +14,9 @@ public class Injector {
 
     private PrinterService printerService;
     private InputService inputService;
-    private BorrowAbleService bookBorrowService;
     private UIServiceCLIImpl uiService;
+    private BorrowAbleService bookBorrowService;
+    private BorrowAbleService movieBorrowService;
 
     private Injector() {
     }
@@ -31,8 +32,10 @@ public class Injector {
     public void injectDependencies(BibliotecaApp bibliotecaApp) {
         bibliotecaApp.setPrinterService(this.printerService);
         bibliotecaApp.setInputService(this.inputService);
-        bibliotecaApp.setBookBorrowService(this.bookBorrowService);
         bibliotecaApp.setUiService(this.uiService);
+        bibliotecaApp.setBookBorrowService(this.bookBorrowService);
+        bibliotecaApp.setMovieBorrowService(this.movieBorrowService);
+
         this.uiService.setPrinterService(this.printerService);
     }
 }
