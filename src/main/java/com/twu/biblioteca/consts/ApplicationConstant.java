@@ -3,11 +3,15 @@ package com.twu.biblioteca.consts;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApplicationContant {
-    public static final String BOOK_INFO_SLICER = "    ";
-    public static final String BOOK_LACE = "*";
+public class ApplicationConstant {
+    public static final String INFO_SLICER = "    ";
+    public static final String LANDSCAPE_LACE = "*";
+
     public static final String BOOK_LIST_LACE = "**********************************************************************";
     public static final String BOOK_LIST_HEADER = "*    Book Name                        |  Book Author      |  Year    *";
+
+    public static final String MOVIE_LIST_LACE = "***************************************************************************";
+    public static final String MOVIE_LIST_HEADER = "*    Movie Name                      |   Year |  Director        | Rating *";
 
     public static final List<String> WELCOME_MESSAGE = Arrays.asList(
             "****************************************************************",

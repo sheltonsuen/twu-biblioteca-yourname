@@ -1,6 +1,10 @@
 package com.twu.biblioteca.domain;
 
+import com.twu.biblioteca.utils.StringUtils;
 import lombok.Data;
+
+import static com.twu.biblioteca.consts.ApplicationConstant.INFO_SLICER;
+import static com.twu.biblioteca.consts.ApplicationConstant.LANDSCAPE_LACE;
 
 @Data
 public class Movie implements Describable {
@@ -21,6 +25,11 @@ public class Movie implements Describable {
 
     @Override
     public String briefSelfIntroduce() {
-        return null;
+        return LANDSCAPE_LACE +
+                INFO_SLICER + StringUtils.smooth(this.name, 32) +
+                INFO_SLICER + this.year +
+                INFO_SLICER + StringUtils.smooth(this.director, 16) +
+                INFO_SLICER + this.rating +
+                INFO_SLICER + LANDSCAPE_LACE;
     }
 }

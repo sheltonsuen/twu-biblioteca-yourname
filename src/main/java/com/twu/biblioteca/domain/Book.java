@@ -3,8 +3,8 @@ package com.twu.biblioteca.domain;
 import com.twu.biblioteca.utils.StringUtils;
 import lombok.Data;
 
-import static com.twu.biblioteca.consts.ApplicationContant.BOOK_INFO_SLICER;
-import static com.twu.biblioteca.consts.ApplicationContant.BOOK_LACE;
+import static com.twu.biblioteca.consts.ApplicationConstant.INFO_SLICER;
+import static com.twu.biblioteca.consts.ApplicationConstant.LANDSCAPE_LACE;
 
 @Data
 public class Book implements Describable {
@@ -23,14 +23,10 @@ public class Book implements Describable {
 
     @Override
     public String briefSelfIntroduce() {
-        return BOOK_LACE +
-                BOOK_INFO_SLICER +
-                StringUtils.smooth(this.name, 32) +
-                BOOK_INFO_SLICER +
-                StringUtils.smooth(this.author, 16) +
-                BOOK_INFO_SLICER +
-                this.yearOfPublished +
-                BOOK_INFO_SLICER +
-                BOOK_LACE;
+        return LANDSCAPE_LACE +
+                INFO_SLICER + StringUtils.smooth(this.name, 32) +
+                INFO_SLICER + StringUtils.smooth(this.author, 16) +
+                INFO_SLICER + this.yearOfPublished +
+                INFO_SLICER + LANDSCAPE_LACE;
     }
 }

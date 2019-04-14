@@ -17,4 +17,6 @@ public interface UIService {
     void showCheckoutBookHint(Boolean result);
 
     void showReturnBookHint(Boolean result);
+
+    void showMovieList(List<Describable> movieList);
 }

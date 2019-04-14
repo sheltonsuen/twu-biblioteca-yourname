@@ -2,6 +2,7 @@ package com.twu.biblioteca.service.impl;
 
 import com.twu.biblioteca.domain.Book;
 import com.twu.biblioteca.domain.Describable;
+import com.twu.biblioteca.domain.Movie;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -118,7 +119,25 @@ public class UIServiceCLIImplTest {
                 spyPrinter.getPrintCalls().get(0).get(1));
     }
 
-    void withServices() {
+    @Test
+    public void should_print_movie_list_with_brief_intro() {
+        withServices();
+        Describable describable = new Movie("Forrest Gump", 1994, "Robert Zemeckis", 2);
+
+        uiServiceCLI.showMovieList(Arrays.asList(describable, describable));
+
+        assertEquals("movie list header",
+                "*    Movie Name                      |   Year |  Director        | Rating *",
+                spyPrinter.getPrintCalls().get(0).get(1));
+        assertEquals("movie one",
+                "*    Forrest Gump                        1994    Robert Zemeckis     2    *",
+                spyPrinter.getPrintCalls().get(1).get(0));
+        assertEquals("book two",
+                "*    Forrest Gump                        1994    Robert Zemeckis     2    *",
+                spyPrinter.getPrintCalls().get(1).get(1));
+    }
+
+    private void withServices() {
         uiServiceCLI = new UIServiceCLIImpl();
         spyPrinter = new SpyPrinterService();
         uiServiceCLI.setPrinterService(spyPrinter);
