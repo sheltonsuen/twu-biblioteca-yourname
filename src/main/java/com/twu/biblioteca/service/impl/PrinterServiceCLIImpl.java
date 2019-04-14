@@ -1,10 +1,10 @@
 package com.twu.biblioteca.service.impl;
 
-import com.twu.biblioteca.service.Printer;
+import com.twu.biblioteca.service.PrinterService;
 
 import java.util.List;
 
-public class CLIPrinter implements Printer {
+public class PrinterServiceCLIImpl implements PrinterService {
 
     @Override
     public void print(List<String> contents) {

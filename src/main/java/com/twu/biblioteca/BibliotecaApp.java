@@ -2,10 +2,10 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.service.BorrowAbleService;
 import com.twu.biblioteca.service.InputService;
-import com.twu.biblioteca.service.Printer;
+import com.twu.biblioteca.service.PrinterService;
 import com.twu.biblioteca.service.UIService;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
-import com.twu.biblioteca.service.impl.CLIPrinter;
+import com.twu.biblioteca.service.impl.PrinterServiceCLIImpl;
 import com.twu.biblioteca.service.impl.InputServiceImpl;
 import com.twu.biblioteca.service.impl.UIServiceCLIImpl;
 import com.twu.biblioteca.utils.Injector;
@@ -15,14 +15,14 @@ import lombok.Setter;
 @Setter
 @Getter
 public class BibliotecaApp {
-    private Printer printer;
+    private PrinterService printerService;
     private InputService inputService;
     private BorrowAbleService borrowAbleService;
     private UIService uiService;
 
     public static void main(String[] args) {
         Injector injector = Injector.getInstance();
-        injector.setPrinter(new CLIPrinter());
+        injector.setPrinterService(new PrinterServiceCLIImpl());
         injector.setInputService(new InputServiceImpl());
         injector.setBorrowAbleService(new BookServiceMockImpl());
         injector.setUiService(new UIServiceCLIImpl());

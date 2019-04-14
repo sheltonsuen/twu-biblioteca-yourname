@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.service.impl.MockInputService;
-import com.twu.biblioteca.service.impl.SpyPrinter;
+import com.twu.biblioteca.service.impl.SpyPrinterService;
 import com.twu.biblioteca.service.impl.BookServiceMockImpl;
 import com.twu.biblioteca.service.impl.UIServiceCLIImpl;
 import com.twu.biblioteca.utils.Injector;
@@ -15,7 +15,7 @@ import static junit.framework.TestCase.assertEquals;
 public class BibliotecaAppTest {
 
     private BibliotecaApp bibliotecaApp = new BibliotecaApp();
-    private SpyPrinter spyPrinter;
+    private SpyPrinterService spyPrinterService;
 
     @Before
     public void setup() {
@@ -27,8 +27,8 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        String welcomeFirstLine = spyPrinter.getPrintCalls().get(0).get(1);
-        String welcomeSecondLine = spyPrinter.getPrintCalls().get(0).get(2);
+        String welcomeFirstLine = spyPrinterService.getPrintCalls().get(0).get(1);
+        String welcomeSecondLine = spyPrinterService.getPrintCalls().get(0).get(2);
 
         assertEquals(
                 "welcome message first line",
@@ -49,7 +49,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "book list followed after welcome message",
                 "*    1. List of books    *",
-                spyPrinter.getPrintCalls().get(1).get(1));
+                spyPrinterService.getPrintCalls().get(1).get(1));
     }
 
     @Test
@@ -58,7 +58,7 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        int actualResult = spyPrinter.getPrintCalls().get(3).size();
+        int actualResult = spyPrinterService.getPrintCalls().get(3).size();
         assertEquals("Books count", 4, actualResult);
     }
 
@@ -68,7 +68,7 @@ public class BibliotecaAppTest {
 
         bibliotecaApp.run();
 
-        String actualResult = spyPrinter.getPrintCalls().get(2).get(1);
+        String actualResult = spyPrinterService.getPrintCalls().get(2).get(1);
 
         assertEquals("Invalid menu options message", "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *", actualResult);
     }
@@ -82,7 +82,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "quit option followed after book list",
                 "*    4. Quit             *",
-                spyPrinter.getPrintCalls().get(1).get(4));
+                spyPrinterService.getPrintCalls().get(1).get(4));
     }
 
     @Test
@@ -100,9 +100,9 @@ public class BibliotecaAppTest {
 
         assertEquals("invalid option",
                 "*    (ఠ్ఠ ˓̭ ఠ్ఠ)    Please select a valid option!   *",
-                spyPrinter.getPrintCalls().get(2).get(1));
+                spyPrinterService.getPrintCalls().get(2).get(1));
 
-        assertEquals("book list count", 4, spyPrinter.getPrintCalls().get(5).size());
+        assertEquals("book list count", 4, spyPrinterService.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -114,7 +114,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "quit option followed after book list",
                 "*    2. Checkout Book    *",
-                spyPrinter.getPrintCalls().get(1).get(2));
+                spyPrinterService.getPrintCalls().get(1).get(2));
     }
 
     @Test
@@ -126,7 +126,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books list count",
                 3,
-                spyPrinter.getPrintCalls().get(5).size());
+                spyPrinterService.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -138,12 +138,12 @@ public class BibliotecaAppTest {
         assertEquals(
                 "success checkout message",
                 "*    （｡ò ∀ ó｡）  Thank you! Enjoy the book    *",
-                spyPrinter.getPrintCalls().get(2).get(1));
+                spyPrinterService.getPrintCalls().get(2).get(1));
 
         assertEquals(
                 "books list count",
                 3,
-                spyPrinter.getPrintCalls().get(5).size());
+                spyPrinterService.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -155,12 +155,12 @@ public class BibliotecaAppTest {
         assertEquals(
                 "success checkout message",
                 "*    ( ‾̮‿͂‾̮ ꐦ)    Sorry, that book is not available    *",
-                spyPrinter.getPrintCalls().get(2).get(1));
+                spyPrinterService.getPrintCalls().get(2).get(1));
 
         assertEquals(
                 "books list count",
                 4,
-                spyPrinter.getPrintCalls().get(5).size());
+                spyPrinterService.getPrintCalls().get(5).size());
     }
 
     @Test
@@ -172,7 +172,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "return option",
                 "*    3. Return Book      *",
-                spyPrinter.getPrintCalls().get(1).get(3));
+                spyPrinterService.getPrintCalls().get(1).get(3));
     }
 
     @Test
@@ -184,7 +184,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books count",
                 4,
-                spyPrinter.getPrintCalls().get(7).size());
+                spyPrinterService.getPrintCalls().get(7).size());
     }
 
     @Test
@@ -196,7 +196,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books count",
                 "*    （｡ò ∀ ó｡）    Thank you for returning the book    *",
-                spyPrinter.getPrintCalls().get(4).get(1));
+                spyPrinterService.getPrintCalls().get(4).get(1));
     }
 
     @Test
@@ -208,7 +208,7 @@ public class BibliotecaAppTest {
         assertEquals(
                 "books count",
                 "*    ( ‾̮‿͂‾̮ ꐦ)    This is not a valid book to return    *",
-                spyPrinter.getPrintCalls().get(4).get(1));
+                spyPrinterService.getPrintCalls().get(4).get(1));
     }
 
     void withInput(List<Integer> options, List<String> bookNames) {
@@ -218,8 +218,8 @@ public class BibliotecaAppTest {
         Injector.getInstance().setInputService(mockInputService);
         Injector.getInstance().setBorrowAbleService(new BookServiceMockImpl());
 
-        spyPrinter = new SpyPrinter();
-        Injector.getInstance().setPrinter(spyPrinter);
+        spyPrinterService = new SpyPrinterService();
+        Injector.getInstance().setPrinterService(spyPrinterService);
 
         Injector.getInstance().setUiService(new UIServiceCLIImpl());
 

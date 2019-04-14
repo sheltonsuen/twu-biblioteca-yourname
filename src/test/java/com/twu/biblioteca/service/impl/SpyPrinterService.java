@@ -1,11 +1,11 @@
 package com.twu.biblioteca.service.impl;
 
-import com.twu.biblioteca.service.Printer;
+import com.twu.biblioteca.service.PrinterService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpyPrinter implements Printer {
+public class SpyPrinterService implements PrinterService {
 
     private List<List<String>> printCalls = new ArrayList<>();
 

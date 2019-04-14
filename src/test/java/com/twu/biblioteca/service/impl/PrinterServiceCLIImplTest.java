@@ -1,6 +1,6 @@
 package com.twu.biblioteca.service.impl;
 
-import com.twu.biblioteca.service.Printer;
+import com.twu.biblioteca.service.PrinterService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,26 +12,26 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class CLIPrinterTest {
+public class PrinterServiceCLIImplTest {
 
     private final ByteArrayOutputStream mockOutputStream = new ByteArrayOutputStream();
 
     private final PrintStream originalOutputStream = System.out;
 
-    private static Printer printer;
+    private static PrinterService printerService;
 
     @Before
     public void setup() {
         System.setOut(new PrintStream(mockOutputStream));
 
-        printer = new CLIPrinter();
+        printerService = new PrinterServiceCLIImpl();
     }
 
     @Test
     public void should_print_all_strings_to_console() {
         List<String> mockContents = Arrays.asList("mock content1", "mock content2");
 
-        printer.print(mockContents);
+        printerService.print(mockContents);
 
         assertEquals("print contents",
                 "mock content1\nmock content2\n",

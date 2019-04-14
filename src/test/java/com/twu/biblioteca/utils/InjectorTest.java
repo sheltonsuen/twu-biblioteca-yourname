@@ -20,18 +20,18 @@ public class InjectorTest {
     @Test
     public void should_inject_CLI_printer_to_biblioteca_app() {
         Injector injector = Injector.getInstance();
-        injector.setPrinter(new SpyPrinter());
+        injector.setPrinterService(new SpyPrinterService());
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
         injector.injectDependencies(bibliotecaApp);
 
-        assertNotNull(bibliotecaApp.getPrinter());
+        assertNotNull(bibliotecaApp.getPrinterService());
     }
 
     @Test
     public void should_inject_input_service_to_biblioteca_app() {
         Injector injector = Injector.getInstance();
-        injector.setPrinter(new SpyPrinter());
+        injector.setPrinterService(new SpyPrinterService());
         injector.setInputService(new InputServiceImpl());
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
 
@@ -43,7 +43,7 @@ public class InjectorTest {
     @Test
     public void should_inject_book_service_to_biblioteca_app() {
         Injector injector = Injector.getInstance();
-        injector.setPrinter(new SpyPrinter());
+        injector.setPrinterService(new SpyPrinterService());
         injector.setInputService(new InputServiceImpl());
         injector.setBorrowAbleService(new BookServiceMockImpl());
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
@@ -56,7 +56,7 @@ public class InjectorTest {
     @Test
     public void should_inject_printer_dependency_to_UI_service() {
         Injector injector = Injector.getInstance();
-        injector.setPrinter(new SpyPrinter());
+        injector.setPrinterService(new SpyPrinterService());
         injector.setInputService(new InputServiceImpl());
         injector.setBorrowAbleService(new BookServiceMockImpl());
         UIServiceCLIImpl uiServiceCLI = new UIServiceCLIImpl();
@@ -66,6 +66,6 @@ public class InjectorTest {
         injector.injectDependencies(bibliotecaApp);
 
         assertNotNull(bibliotecaApp.getUiService());
-        assertNotNull(uiServiceCLI.getPrinter());
+        assertNotNull(uiServiceCLI.getPrinterService());
     }
 }

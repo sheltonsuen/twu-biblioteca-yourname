@@ -10,7 +10,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class UIServiceCLIImplTest {
 
-    private SpyPrinter spyPrinter;
+    private SpyPrinterService spyPrinter;
     private UIServiceCLIImpl uiServiceCLI;
 
     @Test
@@ -115,7 +115,7 @@ public class UIServiceCLIImplTest {
 
     void withServices() {
         uiServiceCLI = new UIServiceCLIImpl();
-        spyPrinter = new SpyPrinter();
-        uiServiceCLI.setPrinter(spyPrinter);
+        spyPrinter = new SpyPrinterService();
+        uiServiceCLI.setPrinterService(spyPrinter);
     }
 }
