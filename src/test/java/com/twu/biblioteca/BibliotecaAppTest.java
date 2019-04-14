@@ -81,8 +81,8 @@ public class BibliotecaAppTest {
 
         assertEquals(
                 "quit option followed after book list",
-                "*    4. Quit             *",
-                spyPrinterService.getPrintCalls().get(1).get(4));
+                "*    5. Quit             *",
+                spyPrinterService.getPrintCalls().get(1).get(5));
     }
 
     @Test
@@ -211,7 +211,7 @@ public class BibliotecaAppTest {
                 spyPrinterService.getPrintCalls().get(4).get(1));
     }
 
-    void withInput(List<Integer> options, List<String> bookNames) {
+    private void withInput(List<Integer> options, List<String> bookNames) {
         Queue<Integer> optionsQueue = new ArrayDeque<>(options);
         Queue<String> bookNamesQueue = new ArrayDeque<>(bookNames);
         MockInputService mockInputService = new MockInputService(optionsQueue, bookNamesQueue);

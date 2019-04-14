@@ -21,7 +21,8 @@ public class ApplicationContant {
             "*    1. List of books    *",
             "*    2. Checkout Book    *",
             "*    3. Return Book      *",
-            "*    4. Quit             *",
+            "*    4. List Movies      *",
+            "*    5. Quit             *",
             "**************************");
 
     public static final List<String> INVALID_OPTION_MESSAGE = Arrays.asList(

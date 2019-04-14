@@ -39,8 +39,13 @@ public class UIServiceCLIImplTest {
         uiServiceCLI.showMenuOptions();
 
         assertEquals("menu options",
-                6,
+                7,
                 spyPrinter.getPrintCalls().get(0).size());
+        assertEquals("list book option", "*    1. List of books    *", spyPrinter.getPrintCalls().get(0).get(1));
+        assertEquals("checkout book", "*    2. Checkout Book    *", spyPrinter.getPrintCalls().get(0).get(2));
+        assertEquals("return book", "*    3. Return Book      *", spyPrinter.getPrintCalls().get(0).get(3));
+        assertEquals("list movies", "*    4. List Movies      *", spyPrinter.getPrintCalls().get(0).get(4));
+        assertEquals("quit", "*    5. Quit             *", spyPrinter.getPrintCalls().get(0).get(5));
     }
 
     @Test
