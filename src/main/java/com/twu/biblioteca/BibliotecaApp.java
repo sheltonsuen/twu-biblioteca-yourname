@@ -63,10 +63,10 @@ public class BibliotecaApp {
                 uiService.showBookList(bookBorrowService.listAll());
                 break;
             case 2:
-                uiService.showCheckoutBookHint(bookBorrowService.checkout(inputService.inputBookName()));
+                uiService.showCheckoutBookHint(bookBorrowService.checkout(inputService.inputName()));
                 break;
             case 3:
-                uiService.showReturnBookHint(bookBorrowService.returnBack(inputService.inputBookName()));
+                uiService.showReturnBookHint(bookBorrowService.returnBack(inputService.inputName()));
                 break;
             case 4:
                 uiService.showMovieList(movieBorrowService.listAll());

@@ -30,7 +30,7 @@ public class InputServiceImplTest {
     public void should_input_a_book_name() {
         System.setIn(new ByteArrayInputStream("Book Name".getBytes()));
 
-        String actualResult = new InputServiceImpl().inputBookName();
+        String actualResult = new InputServiceImpl().inputName();
 
         assertEquals("book name", "Book Name", actualResult);
     }

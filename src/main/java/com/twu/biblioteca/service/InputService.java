@@ -4,5 +4,5 @@ public interface InputService {
 
     Integer inputMenuOptionNumber();
 
-    String inputBookName();
+    String inputName();
 }

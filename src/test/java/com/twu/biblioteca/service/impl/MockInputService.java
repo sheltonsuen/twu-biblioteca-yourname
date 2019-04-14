@@ -20,7 +20,7 @@ public class MockInputService implements InputService {
     }
 
     @Override
-    public String inputBookName() {
+    public String inputName() {
         return inputBookNames.poll();
     }
 }
