@@ -74,4 +74,13 @@ public class UIServiceCLIImpl implements UIService {
                 ? ApplicationConstant.SUCCESSFULLY_CHECKOUT_MOVIE
                 : ApplicationConstant.UNSUCCESSFULLY_CHECKOUT_MOVIE);
     }
+
+    @Override
+    public void showLoggedInAccountInformation() {
+        printerService.print(Arrays.asList(
+                ApplicationConstant.ACCOUNT_INFORMATION_LACE,
+                ApplicationConstant.ACCOUNT_INFORMATION_HEADER,
+                securityService.retrieveLoggedInAccount().briefSelfIntroduce(),
+                ApplicationConstant.ACCOUNT_INFORMATION_LACE));
+    }
 }

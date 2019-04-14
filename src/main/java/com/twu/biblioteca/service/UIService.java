@@ -21,4 +21,6 @@ public interface UIService {
     void showMovieList(List<Describable> movieList);
 
     void showCheckoutMovieHint(Boolean result);
+
+    void showLoggedInAccountInformation();
 }

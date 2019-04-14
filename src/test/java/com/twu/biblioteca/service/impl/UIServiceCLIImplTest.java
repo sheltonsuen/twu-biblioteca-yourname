@@ -173,6 +173,21 @@ public class UIServiceCLIImplTest {
         assertEquals("account info", "*    7. Account Info     *", spyPrinter.getPrintCalls().get(0).get(7));
     }
 
+    @Test
+    public void should_print_account_information_when_select_account_info_menu_option() {
+        withServices(true);
+
+        uiServiceCLI.showLoggedInAccountInformation();
+
+
+        assertEquals("account information header",
+                "*    Name         |  email              |  phone number   *",
+                spyPrinter.getPrintCalls().get(0).get(1));
+        assertEquals("account information",
+                "*    Test                test@tw.com                 15982026694         *",
+                spyPrinter.getPrintCalls().get(0).get(2));
+    }
+
 
     private void withServices() {
         withServices(false);
