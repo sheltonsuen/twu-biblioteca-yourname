@@ -6,6 +6,8 @@ import java.util.List;
 public class ApplicationConstant {
     public static final String INFO_SLICER = "    ";
     public static final String LANDSCAPE_LACE = "*";
+    public static final String LIBRARY_NUMBER = "Library Number:";
+    public static final String PASSWORD = "Password:";
 
     public static final String BOOK_LIST_LACE = "**********************************************************************";
     public static final String BOOK_LIST_HEADER = "*    Book Name                        |  Book Author      |  Year    *";
@@ -70,5 +72,23 @@ public class ApplicationConstant {
             "********************************************************",
             "*    ( ‾̮‿͂‾̮ ꐦ)    Sorry, that movie is not available    *",
             "********************************************************"
+    );
+
+    public static final List<String> LOGIN_HINE = Arrays.asList(
+            "**************************************",
+            "*    （｡ò ∀ ó｡）  Please login !!!    *",
+            "**************************************"
+    );
+
+    public static final List<String> LOGIN_SUCCESSFULLY = Arrays.asList(
+            "*******************************************",
+            "*    （｡ò ∀ ó｡）  Login Successfully!!!    *",
+            "*******************************************"
+    );
+
+    public static final List<String> LOGIN_FAILED = Arrays.asList(
+            "************************************",
+            "*    ( ‾̮‿͂‾̮ ꐦ)   Login Failed!!!    *",
+            "************************************"
     );
 }
